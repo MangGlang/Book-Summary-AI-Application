@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
 
 * {
@@ -540,4 +544,173 @@ button:disabled {
   .nav__list--mobile {
     display: none;
   }
+}
+
+/* Login Modal Styling */
+.login__modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.login__modal--container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  width: 400px;
+  height: 525px;
+  border-radius: 9px;
+  outline: none;
+}
+
+.login__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 400px;
+  padding: 48px 32px 24px;
+  width: 100%;
+}
+
+.login__modal--header {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.login__button--guest {
+  background-color: rgb(58, 87, 157);
+  color: white;
+  position: relative;
+  max-width: 336px;
+
+  margin-top: 24px;
+}
+
+.login__button--google {
+  background-color: #447bf1 !important;
+  color: white;
+  position: relative;
+  max-width: 336px;
+}
+
+.login__button--guest:hover {
+  background-color: #25396b !important;
+}
+
+.login__button--google:hover {
+  background-color: #3367d6 !important;
+}
+
+.guest__user--mask {
+  position: absolute;
+  left: 10px;
+  width: 25px;
+  height: 25px;
+}
+
+.google__user--mask {
+  background: white;
+  width: 36px;
+  height: 36px;
+  left: 2px !important;
+  border-radius: 4px;
+}
+
+.login__seperator--container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login__seperator {
+  display: flex;
+  align-items: center;
+  margin: 16px 0;
+  max-width: 400px;
+  width: 100%;
+}
+
+.login__seperator::after,
+.login__seperator::before {
+  content: "";
+  display: block;
+  flex-grow: 1;
+  height: 1px;
+  background: #bac8ce;
+}
+
+.login__seperator--text {
+  margin: 0 24px;
+  font-size: 14px;
+  color: #394547;
+  font-weight: 500;
+}
+
+.login__main--form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.login__main--input {
+  padding: 8px;
+  margin-bottom: 16px;
+  color: #394547;
+  outline: none;
+  border: 2px solid #bac8ce;
+  border-radius: 4px;
+  height: 40px;
+}
+
+.login__main--input:focus {
+  border-color: #20ba68;
+  border: 2px solid #20ba68;
+}
+
+/* Forgot Password/No Account */
+.login__password--forgot {
+  color: #0564f1;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.login__password--forgot:hover {
+  cursor: pointer;
+  color: #044bb4;
+}
+
+
+.login__account--creation {
+  margin-top: 20px;
+  font-size: 16px;
+  background-color: #f1f6f4;
+  border-radius: 4px;
+  width: 100%;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.login__account--creation:hover {
+  background-color: #dde6e6;
+  cursor: pointer
+}
+
+.login__closeModal {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  top: 10px;
+  right: 10px;
+  transition: all 300ms ease;
+}
+
+.login__closeModal:hover {
+  opacity: .5;
+  cursor: pointer;
 }

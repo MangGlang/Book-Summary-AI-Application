@@ -4,7 +4,15 @@ import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import landing from "../public/assets/landing.png";
 import logo from "../public/assets/logo.png";
-import { AiFillFileText } from "react-icons/ai"
+import { AiFillFileText } from "react-icons/ai";
+import { AiFillBulb } from "react-icons/ai";
+import { AiFillAudio } from "react-icons/ai";
+import { BsStarHalf } from "react-icons/bs";
+import { BiCrown } from "react-icons/bi";
+import { RiLeafLine } from "react-icons/ri";
+import CreateStars from "../components/CreateStars";
+import LoginModal from "@/components/modals/LoginModal"
+import 'tailwindcss/tailwind.css'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +29,7 @@ export default function Home() {
         <nav className="nav">
           <div className="nav__wrapper">
             <figure className="nav__img--mask">
-              <Image src={logo} alt="logo" width={200} height={46}/>
+              <Image src={logo} alt="logo" width={200} height={46} />
             </figure>
             <ul className="nav__list--wrapper">
               <li className="nav__list nav__list--login">Login</li>
@@ -50,7 +58,7 @@ export default function Home() {
                   <button className="btn home__cta--btn">Login</button>
                 </div>
                 <figure className="landing__image--mask">
-                  <Image src={landing} alt="landing"/>
+                  <Image src={landing} alt="landing" />
                 </figure>
               </div>
             </div>
@@ -73,14 +81,18 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="features">
-                  <div className="features__icon">{/* <AiFillBulb /> */}</div>
+                  <div className="features__icon">
+                    <AiFillBulb />
+                  </div>
                   <div className="features__title">Find your next read</div>
                   <div className="features__sub--title">
                     Explore book lists and personalized recommendations.
                   </div>
                 </div>
                 <div className="features">
-                  <div className="features__icon">{/* <AiFillAudio /> */}</div>
+                  <div className="features__icon">
+                    <AiFillAudio />
+                  </div>
                   <div className="features__title">Briefcasts</div>
                   <div className="features__sub--title">
                     Gain valuable insights from briefcasts
@@ -183,7 +195,9 @@ export default function Home() {
                 <div className="review">
                   <div className="review__header">
                     <div className="review__name">Hanna M.</div>
-                    <div className="review__stars">{/* <BsStarFill /> */}</div>
+                    <div className="review__stars">
+                      <CreateStars num={5} />
+                    </div>
                   </div>
                   <div className="review__body">
                     This app has been a <b>game-changer</b> for me! It's saved
@@ -194,7 +208,9 @@ export default function Home() {
                 <div className="review">
                   <div className="review__header">
                     <div className="review__name">David B.</div>
-                    <div className="review__stars">{/* <BsStarFill /> */}</div>
+                    <div className="review__stars">
+                      <CreateStars num={5} />
+                    </div>
                   </div>
                   <div className="review__body">
                     I love this app! It provides {""}
@@ -206,19 +222,23 @@ export default function Home() {
                 <div className="review">
                   <div className="review__header">
                     <div className="review__name">Nathan S.</div>
-                    <div className="review__stars">{/* <BsStarFill /> */}</div>
+                    <div className="review__stars">
+                      <CreateStars num={5} />
+                    </div>
                   </div>
                   <div className="review__body">
                     This app is a great way to get the main takeaways from a
                     book without having to read the entire thing. {""}
-                    <b>The summaries are well-written and informative.</b>
+                    <b>The summaries are well-written and informative. </b>
                     Definitely worth downloading.
                   </div>
                 </div>
                 <div className="review">
                   <div className="review__header">
                     <div className="review__name">Ryan R.</div>
-                    <div className="review__stars">{/* <BsStarFill /> */}</div>
+                    <div className="review__stars">
+                      <CreateStars num={5} />
+                    </div>
                   </div>
                   <div className="review__body">
                     If you're a busy person who {""}
@@ -229,7 +249,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="reviews__btn--wrapper">
-                <button className="btn home__cta--btn">Login</button>
+                <LoginModal />
               </div>
             </div>
           </div>
@@ -242,7 +262,9 @@ export default function Home() {
               </div>
               <div className="numbers__wrapper">
                 <div className="numbers">
-                  <div className="numbers__icon">{/* <BiCrown /> */}</div>
+                  <div className="numbers__icon">
+                    <BiCrown />
+                  </div>
                   <div className="numbers__title">3 Million</div>
                   <div className="numbers__sub--title">
                     Downloads on all platforms
@@ -250,8 +272,8 @@ export default function Home() {
                 </div>
                 <div className="numbers">
                   <div className="numbers__icon numbers__star--icon">
-                    {/* <BsStarFill /> */}
-                    {/* <BsStarHalf /> */}
+                    <CreateStars num={4} />
+                    <BsStarHalf />
                   </div>
                   <div className="numbers__title">4.5 Stars</div>
                   <div className="numbers__sub--title">
@@ -259,7 +281,9 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="numbers">
-                  <div className="numbers__icon">{/* <RiLeafLine /> */}</div>
+                  <div className="numbers__icon">
+                    <RiLeafLine />
+                  </div>
                   <div className="numbers__title">97%</div>
                   <div className="numbers__sub--title">
                     Of Summarist members create a better reading habit
