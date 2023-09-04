@@ -1,16 +1,14 @@
-import React from 'react'
-import { BsStarFill } from "react-icons/bs";
+import React from "react";
+import { BsStar, BsStarFill } from "react-icons/bs";
 
-const CreateStars = ( { num } ) => {
+const CreateStars = ({ starsData }) => {
+  const stars = [];
 
-  return (
-    <>
-        {
-          // TODO: Give id's to stars
-            new Array(num).fill(<BsStarFill />)
-        }
-    </>
-  )
-}
+  for (let i = 0; i < starsData; ++i) {
+    stars.push(<BsStarFill key={i} />);
+  }
+  
+  return <>{stars}</>;
+};
 
-export default CreateStars
+export default CreateStars;

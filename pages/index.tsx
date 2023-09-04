@@ -11,12 +11,16 @@ import { BsStarHalf } from "react-icons/bs";
 import { BiCrown } from "react-icons/bi";
 import { RiLeafLine } from "react-icons/ri";
 import CreateStars from "../components/CreateStars";
-import LoginModal from "@/components/modals/LoginModal"
-import 'tailwindcss/tailwind.css'
+import LoginModal from "@/components/modals/LoginModal";
+import "tailwindcss/tailwind.css";
+import { useDispatch } from "react-redux";
+import { openLoginModal } from "@/redux/modalSlice";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const dispatch = useDispatch();
+
   return (
     <>
       <Head>
@@ -32,7 +36,12 @@ export default function Home() {
               <Image src={logo} alt="logo" width={200} height={46} />
             </figure>
             <ul className="nav__list--wrapper">
-              <li className="nav__list nav__list--login">Login</li>
+              <li
+                className="nav__list nav__list--login"
+                onClick={() => dispatch(openLoginModal())}
+              >
+                Login
+              </li>
               <li className="nav__list nav__list--mobile">About</li>
               <li className="nav__list nav__list--mobile">Contact</li>
               <li className="nav__list nav__list--mobile">Help</li>
@@ -55,7 +64,7 @@ export default function Home() {
                     <br className="remove--tablet" />
                     and even people who don’t like to read.
                   </div>
-                  <button className="btn home__cta--btn">Login</button>
+                  <LoginModal />
                 </div>
                 <figure className="landing__image--mask">
                   <Image src={landing} alt="landing" />
@@ -196,7 +205,7 @@ export default function Home() {
                   <div className="review__header">
                     <div className="review__name">Hanna M.</div>
                     <div className="review__stars">
-                      <CreateStars num={5} />
+                      <CreateStars starsData={5} />
                     </div>
                   </div>
                   <div className="review__body">
@@ -209,7 +218,7 @@ export default function Home() {
                   <div className="review__header">
                     <div className="review__name">David B.</div>
                     <div className="review__stars">
-                      <CreateStars num={5} />
+                      <CreateStars starsData={5} />
                     </div>
                   </div>
                   <div className="review__body">
@@ -223,7 +232,7 @@ export default function Home() {
                   <div className="review__header">
                     <div className="review__name">Nathan S.</div>
                     <div className="review__stars">
-                      <CreateStars num={5} />
+                      <CreateStars starsData={5} />
                     </div>
                   </div>
                   <div className="review__body">
@@ -237,7 +246,7 @@ export default function Home() {
                   <div className="review__header">
                     <div className="review__name">Ryan R.</div>
                     <div className="review__stars">
-                      <CreateStars num={5} />
+                      <CreateStars starsData={5} />
                     </div>
                   </div>
                   <div className="review__body">
@@ -272,7 +281,7 @@ export default function Home() {
                 </div>
                 <div className="numbers">
                   <div className="numbers__icon numbers__star--icon">
-                    <CreateStars num={4} />
+                    <CreateStars starsData={4} />
                     <BsStarHalf />
                   </div>
                   <div className="numbers__title">4.5 Stars</div>

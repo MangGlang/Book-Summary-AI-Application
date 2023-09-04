@@ -1,19 +1,30 @@
 import Modal from "@mui/material/Modal";
-import { useState } from "react";
 import { FaUserAlt } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import {AiOutlineCloseCircle} from "react-icons/ai"
+import { AiOutlineCloseCircle } from "react-icons/ai";
+import { useSelector, useDispatch } from "react-redux";
+import { closeLoginModal, openLoginModal } from "@/redux/modalSlice";
 
 export default function LoginModal() {
-  const [isOpen, setIsOpen] = useState(true);
+  // const [isOpen, setIsOpen] = useState(true);
 
-  const handleClose = () => setIsOpen(false);
+  // const handleClose = () => setIsOpen(false);
+  const isOpen = useSelector((state) => state.modals.loginModalOpen);
+  // use modalSlice functions using dispatch hook
+  const dispatch = useDispatch();
+
   return (
     <>
-      <button className="btn home__cta--btn">Login</button>
+      <button
+      onClick={() => dispatch(openLoginModal())}
+      className="btn home__cta--btn">Login</button>
 
       {/* Modal: 2 props, "open={useState to handle open}", "onClose={funct to handle close}" */}
-      <Modal open={isOpen} onClose={handleClose} className="login__modal">
+      <Modal
+        open={isOpen}
+        onClose={() => dispatch(closeLoginModal())}
+        className="login__modal"
+      >
         <div className="login__modal--container">
           <div className="login__content">
             <div className="login__modal--header">Log in to Summarist</div>
@@ -52,13 +63,13 @@ export default function LoginModal() {
           </div>
 
           {/* Forgot Password/No Account */}
-          <div className="login__password--forgot">
-            Forgot your password?
-          </div>
+          <div className="login__password--forgot">Forgot your password?</div>
           <div className="login__password--forgot login__account--creation">
             Don't have an account?
           </div>
-          <AiOutlineCloseCircle className="login__closeModal"/>
+          <AiOutlineCloseCircle
+          onClick={() => dispatch(closeLoginModal())}
+          className="login__closeModal" />
         </div>
       </Modal>
     </>
