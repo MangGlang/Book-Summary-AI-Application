@@ -1,9 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    signUpModalOpen: false,
-    loginModalOpen: false
-}
+  signUpModalOpen: false,
+  loginModalOpen: false,
+  forgotPasswordModalOpen: false,
+};
 
 const modalSlice = createSlice({
   name: "modal",
@@ -11,26 +12,35 @@ const modalSlice = createSlice({
   reducers: {
     // actions
     openLoginModal: (state) => {
-        state.loginModalOpen = true;
+      state.loginModalOpen = true;
     },
     closeLoginModal: (state) => {
-        state.loginModalOpen = false;
+      state.loginModalOpen = false;
     },
 
     openSignUpModal: (state) => {
-        state.signUpModalOpen = true;
+      state.signUpModalOpen = true;
     },
     closeSignUpModal: (state) => {
-        state.signUpModalOpen = false;
-    }
-  }
+      state.signUpModalOpen = false;
+    },
+
+    openForgotModal: (state) => {
+      state.forgotPasswordModalOpen = true;
+    },
+    closeForgotModal: (state) => {
+      state.forgotPasswordModalOpen = false;
+    },
+  },
 });
 
 export const {
-    openLoginModal,
-    closeLoginModal,
-    openSignUpModal,
-    closeSignUpModal
-} = modalSlice.actions
+  openLoginModal,
+  closeLoginModal,
+  openSignUpModal,
+  closeSignUpModal,
+  openForgotModal,
+  closeForgotModal,
+} = modalSlice.actions;
 
-export default modalSlice.reducer
+export default modalSlice.reducer;

@@ -547,14 +547,14 @@ button:disabled {
 }
 
 /* Login Modal Styling */
-.login__modal {
+.auth__modal {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
 }
 
-.login__modal--container {
+.auth__modal--container {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -566,7 +566,15 @@ button:disabled {
   outline: none;
 }
 
-.login__content {
+.signUp__modal--container {
+  height: 416px;
+}
+
+.forgotPassword__modal--container {
+  height: 270px;
+}
+
+.auth__content {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -576,12 +584,16 @@ button:disabled {
   width: 100%;
 }
 
-.login__modal--header {
+.auth__modal--header {
   font-size: 20px;
   font-weight: bold;
 }
 
-.login__button--guest {
+.signUp__modal--header {
+  margin-bottom: 20px;
+}
+
+.auth__button--guest {
   background-color: rgb(58, 87, 157);
   color: white;
   position: relative;
@@ -590,18 +602,18 @@ button:disabled {
   margin-top: 24px;
 }
 
-.login__button--google {
+.auth__button--google {
   background-color: #447bf1 !important;
   color: white;
   position: relative;
   max-width: 336px;
 }
 
-.login__button--guest:hover {
+.auth__button--guest:hover {
   background-color: #25396b !important;
 }
 
-.login__button--google:hover {
+.auth__button--google:hover {
   background-color: #3367d6 !important;
 }
 
@@ -620,13 +632,13 @@ button:disabled {
   border-radius: 4px;
 }
 
-.login__seperator--container {
+.auth__seperator--container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.login__seperator {
+.auth__seperator {
   display: flex;
   align-items: center;
   margin: 16px 0;
@@ -634,8 +646,8 @@ button:disabled {
   width: 100%;
 }
 
-.login__seperator::after,
-.login__seperator::before {
+.auth__seperator::after,
+.auth__seperator::before {
   content: "";
   display: block;
   flex-grow: 1;
@@ -643,20 +655,20 @@ button:disabled {
   background: #bac8ce;
 }
 
-.login__seperator--text {
+.auth__seperator--text {
   margin: 0 24px;
   font-size: 14px;
   color: #394547;
   font-weight: 500;
 }
 
-.login__main--form {
+.auth__main--form {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-.login__main--input {
+.auth__main--input {
   padding: 8px;
   margin-bottom: 16px;
   color: #394547;
@@ -666,25 +678,25 @@ button:disabled {
   height: 40px;
 }
 
-.login__main--input:focus {
+.auth__main--input:focus {
   border-color: #20ba68;
   border: 2px solid #20ba68;
 }
 
 /* Forgot Password/No Account */
-.login__password--forgot {
+.auth__password--forgot {
   color: #0564f1;
   font-size: 14px;
   font-weight: 300;
 }
 
-.login__password--forgot:hover {
+.auth__password--forgot:hover {
   cursor: pointer;
   color: #044bb4;
 }
 
 
-.login__account--creation {
+.auth__account--creation {
   margin-top: 20px;
   font-size: 16px;
   background-color: #f1f6f4;
@@ -696,21 +708,21 @@ button:disabled {
   display: flex;
 }
 
-.login__account--creation:hover {
+.auth__account--creation:hover {
   background-color: #dde6e6;
   cursor: pointer
 }
 
-.login__closeModal {
+.auth__closeModal {
   position: absolute;
   width: 32px;
   height: 32px;
   top: 10px;
   right: 10px;
-  transition: all 300ms ease;
+  /* transition: all 50ms ease-in-out; */
 }
 
-.login__closeModal:hover {
+.auth__closeModal:hover {
   opacity: .5;
   cursor: pointer;
 }

@@ -4,6 +4,8 @@ import { FcGoogle } from "react-icons/fc";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
 import { closeLoginModal, openLoginModal } from "@/redux/modalSlice";
+import SignupModal from "@/components/modals/SignupModal";
+import ForgotPassModal from "@/components/modals/ForgotPassModal";
 
 export default function LoginModal() {
   // const [isOpen, setIsOpen] = useState(true);
@@ -16,45 +18,48 @@ export default function LoginModal() {
   return (
     <>
       <button
-      onClick={() => dispatch(openLoginModal())}
-      className="btn home__cta--btn">Login</button>
+        onClick={() => dispatch(openLoginModal())}
+        className="btn home__cta--btn"
+      >
+        Login
+      </button>
 
       {/* Modal: 2 props, "open={useState to handle open}", "onClose={funct to handle close}" */}
       <Modal
         open={isOpen}
         onClose={() => dispatch(closeLoginModal())}
-        className="login__modal"
+        className="auth__modal"
       >
-        <div className="login__modal--container">
-          <div className="login__content">
-            <div className="login__modal--header">Log in to Summarist</div>
+        <div className="auth__modal--container">
+          <div className="auth__content">
+            <div className="auth__modal--header">Log in to Summarist</div>
 
-            {/* Login Buttons */}
-            <button className="btn home__cta--btn login__button--guest">
+            {/* auth Buttons */}
+            <button className="btn home__cta--btn auth__button--guest">
               <FaUserAlt className="guest__user--mask" />
-              Login as a Guest
+              Log in as a Guest
             </button>
 
-            <div className="login__seperator">
-              <span className="login__seperator--text">or</span>
+            <div className="auth__seperator">
+              <span className="auth__seperator--text">or</span>
             </div>
-            <button className="btn home__cta--btn login__button--google">
+            <button className="btn home__cta--btn auth__button--google">
               <FcGoogle className="guest__user--mask google__user--mask" />
-              Login with Google
+              Log in with Google
             </button>
-            <div className="login__seperator">
-              <span className="login__seperator--text">or</span>
+            <div className="auth__seperator">
+              <span className="auth__seperator--text">or</span>
             </div>
 
-            {/* Login Form */}
-            <div className="login__main--form">
+            {/* Auth Form */}
+            <div className="auth__main--form">
               <input
-                className="login__main--input"
+                className="auth__main--input"
                 placeholder="Email Address"
                 type={"email"}
               />
               <input
-                className="login__main--input"
+                className="auth__main--input"
                 placeholder="Password"
                 type={"password"}
               />
@@ -63,13 +68,16 @@ export default function LoginModal() {
           </div>
 
           {/* Forgot Password/No Account */}
-          <div className="login__password--forgot">Forgot your password?</div>
-          <div className="login__password--forgot login__account--creation">
+          <ForgotPassModal />
+          {/* <div className="auth__password--forgot auth__account--creation">
             Don't have an account?
-          </div>
+          </div> */}
+
+          <SignupModal />
           <AiOutlineCloseCircle
-          onClick={() => dispatch(closeLoginModal())}
-          className="login__closeModal" />
+            onClick={() => dispatch(closeLoginModal())}
+            className="auth__closeModal"
+          />
         </div>
       </Modal>
     </>

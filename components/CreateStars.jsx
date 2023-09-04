@@ -1,5 +1,5 @@
 import React from "react";
-import { BsStar, BsStarFill } from "react-icons/bs";
+import { BsStarFill } from "react-icons/bs";
 
 const CreateStars = ({ starsData }) => {
   const stars = [];
