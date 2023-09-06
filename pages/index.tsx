@@ -18,6 +18,7 @@ export default function Home() {
   const username = useSelector((state) => state.user.username);
   // minhleenl
   console.log(username);
+  // Use in future
   const dispatch = useDispatch();
 
   return (
@@ -30,6 +31,7 @@ export default function Home() {
       </Head>
 
       <main>
+        {/* Have route to next pages? */}
         <LandingNavBar />
         <Landing />
         <Features />
