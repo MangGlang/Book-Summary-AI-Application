@@ -580,8 +580,9 @@ button:disabled {
   justify-content: center;
   align-items: center;
   max-width: 400px;
-  padding: 48px 32px 24px;
+  padding: 48px 32px 16px;
   width: 100%;
+  overflow-y: visible;
 }
 
 .auth__modal--header {
@@ -603,6 +604,7 @@ button:disabled {
 .icon-spin {
   -webkit-animation: icon-spin 1s infinite linear;
   animation: icon-spin 1s infinite linear;
+  color: white;
 }
 
 @-webkit-keyframes icon-spin {
@@ -636,8 +638,7 @@ button:disabled {
   color: white;
   position: relative;
   max-width: 336px;
-
-  margin-top: 24px;
+  margin-top: 20px;
 }
 
 .auth__button--google {
@@ -679,7 +680,7 @@ button:disabled {
 .auth__seperator {
   display: flex;
   align-items: center;
-  margin: 16px 0;
+  margin: 12px 0;
   max-width: 400px;
   width: 100%;
 }
@@ -726,6 +727,7 @@ button:disabled {
   color: #0564f1;
   font-size: 14px;
   font-weight: 300;
+  margin-bottom: 8px;
 }
 
 .auth__password--forgot:hover {
@@ -734,7 +736,7 @@ button:disabled {
 }
 
 .auth__account--creation {
-  margin-top: 20px;
+  /* margin-top: 12px; */
   font-size: 16px;
   background-color: #f1f6f4;
   border-radius: 4px;
@@ -743,6 +745,9 @@ button:disabled {
   justify-content: center;
   align-items: center;
   display: flex;
+  color: #0365f2;
+  position: absolute;
+  bottom: 0;
 }
 
 .auth__account--creation:hover {

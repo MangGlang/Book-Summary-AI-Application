@@ -15,9 +15,6 @@ import Numbers from "@/components/Numbers";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const username = useSelector((state) => state.user.username);
-  // minhleenl
-  console.log(username);
   // Use in future
   const dispatch = useDispatch();
 

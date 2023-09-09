@@ -7,7 +7,6 @@ module.exports = {
     // that end in the following ."fileType"
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./modals/**/*.{js,ts,jsx,tsx,mdx}",
     // *****************************
 
     // Or if using `src` directory:

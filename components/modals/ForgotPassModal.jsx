@@ -54,7 +54,7 @@ export default function ForgotPassModal() {
           </div>
           <div
             onClick={() => dispatch(closeForgotModal())}
-            className="auth__password--forgot auth__account--creation"
+            className="auth__account--creation"
           >
             Go to login
           </div>

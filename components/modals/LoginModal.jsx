@@ -8,14 +8,20 @@ import { closeLoginModal, openLoginModal } from "@/redux/modalSlice";
 import SignupModal from "@/components/modals/SignupModal";
 import ForgotPassModal from "@/components/modals/ForgotPassModal";
 import { auth } from "@/firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { useState } from "react";
+import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import { useEffect, useState } from "react";
+
+import { signInWithGoogle } from "@/firebase";
 import Link from "next/link";
+import { setUser } from "@/redux/userSlice";
+import { useRouter } from "next/router";
 
 export default function LoginModal() {
+  const [errorMessage, setErrorMessage] = useState("");
   const [guestLoading, setGuestLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   // const handleClose = () => setIsOpen(false);
   const isOpen = useSelector((state) => state.modals.loginModalOpen);
@@ -25,13 +31,23 @@ export default function LoginModal() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const clearErrorMessage = () => {
+    setErrorMessage("");
+  };
+
   async function handleGuestSignIn() {
     setGuestLoading(true);
-    await signInWithEmailAndPassword(
-      auth,
-      "guest123321@gmail.com",
-      "guest123321@gmail.com"
-    );
+    try {
+      await signInWithEmailAndPassword(
+        auth,
+        "guest123321@gmail.com",
+        "guest123321@gmail.com"
+      );
+      dispatch(closeLoginModal());
+      router.push("/for-you");
+    } catch (error) {
+      alert(error.message);
+    }
     console.log("guest");
     setTimeout(() => {
       setGuestLoading(false);
@@ -39,14 +55,63 @@ export default function LoginModal() {
   }
 
   async function handleSignIn() {
-    setLoading(true);
-    await signInWithEmailAndPassword(auth, email, password);
-    // minhleenl@gmail.com
-    console.log(email);
+    try {
+      setLoading(true);
+      await signInWithEmailAndPassword(auth, email, password);
+      // minhleenl@gmail.com
+      console.log(email);
+      setTimeout(() => {
+        setLoading(false);
+      }, 500);
+      dispatch(closeLoginModal());
+    } catch (error) {
+      setErrorMessage(error.message);
+    }
     setTimeout(() => {
       setLoading(false);
     }, 500);
   }
+
+  async function handleGoogleSignIn() {
+    try {
+      setGoogleLoading(true);
+      await signInWithGoogle().then((result) => {
+        // function: Return information of user after they authenticate
+        const name = result.user.displayName;
+        const email = result.user.email;
+        console.log(result);
+        setGoogleLoading(false);
+        router.push("/for-you");
+      });
+      dispatch(closeLoginModal());
+    } catch (error) {
+      setErrorMessage(error.message);
+      setGoogleLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      // if user is not signed in, return
+      if (!currentUser) return;
+
+      //  if user is signed in, then handle redux actions
+      router.push("/for-you");
+      console.log(currentUser);
+      dispatch(
+        setUser({
+          // pass in user object
+          // name: currentUser.displayName,
+          email: currentUser.email,
+          username: currentUser.email.split("@")[0],
+          subscriptionStatus: "Basic",
+        })
+      );
+    });
+
+    // Stop listener from using additional resources
+    return unsubscribe;
+  }, []);
 
   return (
     <>
@@ -60,14 +125,19 @@ export default function LoginModal() {
       {/* Modal: 2 props, "open={useState to handle open}", "onClose={funct to handle close}" */}
       <Modal
         open={isOpen}
-        onClose={() => dispatch(closeLoginModal())}
+        onClose={() => {
+          dispatch(closeLoginModal());
+          clearErrorMessage();
+        }}
         className="auth__modal"
       >
         <div className="auth__modal--container">
           <div className="auth__content">
             <div className="auth__modal--header">Log in to Summarist</div>
-
             {/* auth Buttons */}
+            <div className="w-full text-center">
+              <p className=" text-red-500">{isOpen ? errorMessage : null}</p>
+            </div>
             <button
               onClick={handleGuestSignIn}
               className="btn home__cta--btn auth__button--guest"
@@ -87,7 +157,10 @@ export default function LoginModal() {
             <div className="auth__seperator">
               <span className="auth__seperator--text">or</span>
             </div>
-            <button className="btn home__cta--btn auth__button--google">
+            <button
+              onClick={handleGoogleSignIn}
+              className="btn home__cta--btn auth__button--google"
+            >
               {/* TODO: Fix spinner loading state by implementing google auth */}
               {googleLoading ? (
                 // <Link> ; route to new page "for-you"
@@ -120,15 +193,13 @@ export default function LoginModal() {
               />
               <button onClick={handleSignIn} className="btn">
                 {/* TODO: Stop spinner animation when shown error "Firebase: Error (auth/invalid-email)." */}
-              {loading ? (
-                // <Link> ; route to new page "for-you"
-                <AiOutlineLoading3Quarters className="button__loading--spin icon-spin" />
-              ) : (
-                // </Link>
-                <div className="button__loading--center">
-                  {"Login"}
-                </div>
-              )}
+                {loading ? (
+                  // <Link> ; route to new page "for-you"
+                  <AiOutlineLoading3Quarters className="button__loading--spin icon-spin" />
+                ) : (
+                  // </Link>
+                  <div className="button__loading--center">{"Login"}</div>
+                )}
               </button>
             </div>
           </div>
