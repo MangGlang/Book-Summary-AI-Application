@@ -74,6 +74,8 @@ export default function SignupModal() {
     }
   }
 
+  // comment for delete
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       // if user is not signed in, return
