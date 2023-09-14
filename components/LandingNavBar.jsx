@@ -7,13 +7,12 @@ import { openLoginModal } from "@/redux/modalSlice";
 export default function LandingNavBar() {
   const dispatch = useDispatch();
   return (
-    <>
       <nav className="nav">
         <div className="nav__wrapper">
           <figure className="nav__img--mask">
             <Image src={logo} alt="logo" width={200} height={46} />
           </figure>
-          <ul className="nav__list--wrapper">
+          <ul className="nav__list--wrapper ">
             <li
               className="nav__list nav__list--login"
               onClick={() => dispatch(openLoginModal())}
@@ -26,6 +25,5 @@ export default function LandingNavBar() {
           </ul>
         </div>
       </nav>
-    </>
   );
 }

@@ -768,3 +768,22 @@ button:disabled {
   opacity: 0.5;
   cursor: pointer;
 }
+
+/* For You Page */
+.sidebar__link--wrapper {
+  height: 56px;
+  margin-bottom: 8px;
+  color: #032b41;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar__icon {
+  width: 26px;
+  height: 26px;
+}
+
+.sidebar__icon--wrapper {
+  display: flex;
+  align-items: center;
+}

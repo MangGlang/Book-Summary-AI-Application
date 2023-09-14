@@ -4,10 +4,9 @@ import { AiFillAudio } from "react-icons/ai";
 
 export default function Features() {
   return (
-    <>
       <section id="features">
-        <div className="container">
-          <div className="row">
+        <div className="row">
+          <div className="container">
             <div className="section__title">
               Understand books in few minutes
             </div>
@@ -122,6 +121,5 @@ export default function Features() {
           </div>
         </div>
       </section>
-    </>
   );
 }

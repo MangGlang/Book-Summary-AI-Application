@@ -4,7 +4,6 @@ import LoginModal from "@/components/modals/LoginModal";
 
 export default function Reviews() {
   return (
-    <>
       <section id="reviews">
         <div className="row">
           <div className="container">
@@ -72,6 +71,5 @@ export default function Reviews() {
           </div>
         </div>
       </section>
-    </>
   );
 }

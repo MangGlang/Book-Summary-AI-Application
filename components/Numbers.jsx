@@ -5,10 +5,9 @@ import CreateStars from "../components/CreateStars";
 
 export default function Numbers() {
   return (
-    <>
       <section id="numbers">
-        <div className="container">
-          <div className="row">
+        <div className="row">
+          <div className="container">
             <div className="section__title">
               Start growing with Summarist now
             </div>
@@ -45,6 +44,5 @@ export default function Numbers() {
           </div>
         </div>
       </section>
-    </>
   );
 }

@@ -1,10 +1,11 @@
-import Sidebar from "@/components/Sidebar"
+import Sidebar from "@/components/Sidebar";
+
 
 export default function forYou() {
   return (
-    <>
-      <div className="text-red-500">This is the for-you page.</div>;
+    <section id="for-you">
+     
       <Sidebar />
-    </>
+    </section>
   );
 }
