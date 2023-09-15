@@ -54,7 +54,7 @@ export default function Sidebar() {
                 <div className="ml-2">My Library</div>
               </div>
             </a>
-
+{/* add highlights and search icons */}
             <div className="sidebar__link--wrapper hover:cursor-not-allowed">
               <PiPencilLineFill className="sidebar__icon"/>
               <div className="ml-2">Highlights</div>
