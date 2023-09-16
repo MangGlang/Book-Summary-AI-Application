@@ -779,11 +779,26 @@ button:disabled {
 }
 
 .sidebar__icon {
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
 }
 
 .sidebar__icon--wrapper {
   display: flex;
   align-items: center;
+}
+
+.active--tab {
+  background-color: #2bd97c;
+  width: 5px;
+  height: 100%;
+}
+
+/* SEARCH */
+.search__wrapper {
+  max-width: 1080px;
+}
+
+.search__icon {
+   height: 35px !important;
 }

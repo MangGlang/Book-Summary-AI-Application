@@ -26,13 +26,13 @@ export default function Home() {
         <link rel="stylesheet" href="./globals.css" />
       </Head>
 
-        {/* Have route to next pages? */}
-        <LandingNavBar />
-        <Landing />
-        <Features />
-        <Reviews />
-        <Numbers />
-        <Footer />
+      {/* Have route to next pages? */}
+      <LandingNavBar />
+      <Landing />
+      <Features />
+      <Reviews />
+      <Numbers />
+      <Footer />
     </>
   );
 }
