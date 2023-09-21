@@ -13,6 +13,7 @@ const Search = () => {
               placeholder="Search for Books"
             />
             {/* comment */}
+            {/* comment2 */}
             <div className="absolute right-20 border-[#e1e7ea] border-l-2">a</div>
             <BiSearchAlt className="absolute right-12 sidebar__icon search__icon" />
           </div>
