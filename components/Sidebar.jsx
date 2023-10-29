@@ -43,13 +43,14 @@ export default function Sidebar() {
   return (
     <>
     {/* TODO: Smoother hidden animation to hide sdiebar when md breakpoint is met */}
-      <div className="bg-[#f7faf9] w-100 h-screen hidden md:block">
-        <div className="sidebar__wrapper flex flex-col">
+      <div className="bg-[#f7faf9] w-100 h-screen hidden md:block relative">
+        <div className="sidebar__wrapper flex flex-col justify-between h-full">
           <figure className="m-5">
             <Image src={logo} alt="logo" width={160} height={40} />
           </figure>
 
-          <div className="sidebar__top mt-6">
+          <div className="flex flex-col justify-between h-full">
+          <div className="mt-6">
             <Link
               href="/for-you"
               className="sidebar__link--wrapper hover:bg-gray-200"
@@ -80,12 +81,13 @@ export default function Sidebar() {
               <div className="ml-2">Search</div>
             </div>
           </div>
-          <div className="sidebar__bottom absolute bottom-2 w-[100%]">
+          <div className="sidebar__bottom bottom-2">
             {/* TODO: Implement Settings Page */}
             <Link
               className="sidebar__link--wrapper group hover:bg-gray-200"
               href="/settings"
             >
+              <div className={`sidebar__link--line ${router.pathname == "/settings" ? "active--tab" : ""}`}></div>
               <div className="ml-5 sidebar__icon--wrapper">
                 <BsGear className="sidebar__icon" />
                 <div className="ml-2">Settings</div>
@@ -109,6 +111,7 @@ export default function Sidebar() {
                 <div className="ml-2">Logout</div>
               </button>
             </div>
+          </div>
           </div>
         </div>
       </div>

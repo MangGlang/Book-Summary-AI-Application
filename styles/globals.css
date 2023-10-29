@@ -8,12 +8,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+  font-family: Roboto, sans-serif;
 }
 
 body {
   max-width: 100%;
   overflow-x: hidden;
+  font-family: Roboto, sans-serif;
 }
 
 a {
@@ -801,4 +802,9 @@ button:disabled {
 
 .search__icon {
    height: 35px !important;
+   color: #03314b;
+}
+
+input::placeholder {
+  color: #515977;
 }

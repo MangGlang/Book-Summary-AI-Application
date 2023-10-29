@@ -7,7 +7,8 @@ export default function forYou() {
     <section id="for-you">
       <div className="relative flex">
         <Sidebar />
-        <div className="flex-grow">
+
+        <div className="flex-grow ">
         <Search />
         <SelectedBook />
         </div>
