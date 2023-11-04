@@ -39,7 +39,7 @@ export default function Sidebar() {
     // dispatch(closeLoginModal());
     console.log(user);
   }
-
+// asdasd
   return (
     <>
     {/* TODO: Smoother hidden animation to hide sdiebar when md breakpoint is met */}
