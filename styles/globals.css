@@ -808,3 +808,36 @@ button:disabled {
 input::placeholder {
   color: #515977;
 }
+
+.for-you__tile {
+  font-weight: 700;
+  margin-bottom: 16px;
+  font-size: 22px;
+  color: #032b41;
+}
+
+.selected__book {
+  background-color: #fbefd6;
+  display: flex;
+  justify-content: space-between;
+  width: calc((100% / 3) * 2);
+  gap: 24px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.selected__book--sub-title {
+  color: #032b41;
+  font-weight: 600;
+  width: 40%;
+}
+
+.selected__book--divider {
+  width: 1px;
+  background-color: #bac8ce;
+}
+
+.selected__book--content {
+  display: flex;
+  width: 60%;
+}
