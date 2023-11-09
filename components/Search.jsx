@@ -15,6 +15,7 @@ const Search = () => {
             {/* comment */}
             {/* comment2 */}
             {/* comment3 */}
+            {/* comment4 */}
             <div className="absolute right-20 border-[#e1e7ea] border-l-2 " style={ { height: 35 } }></div>
             <BiSearchAlt className="absolute right-12 sidebar__icon search__icon " />
           </div>
