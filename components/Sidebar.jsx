@@ -36,6 +36,7 @@ export default function Sidebar() {
     }
     // sign out user from redux store; reset user info
     // dispatch(closeSignUpModal());
+    // make sure to add sign out modal here in order to sign users out 
     // dispatch(closeLoginModal());
     console.log(user);
   }

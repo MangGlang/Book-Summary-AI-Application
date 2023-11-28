@@ -149,7 +149,7 @@ export default function LoginModal() {
                 // </Link>
                 <div className="button__loading--center">
                   <FaUserAlt className="guest__user--mask" />
-                  {"Log in as Guest"}
+                  {"Login as a Guest"}
                 </div>
               )}
             </button>
@@ -169,7 +169,7 @@ export default function LoginModal() {
                 // </Link>
                 <div className="button__loading--center">
                   <FcGoogle className="guest__user--mask google__user--mask" />
-                  {"Log in with Google"}
+                  {"Login with Google"}
                 </div>
               )}
             </button>
@@ -180,13 +180,13 @@ export default function LoginModal() {
             {/* Auth Form */}
             <div className="auth__main--form">
               <input
-                className="auth__main--input"
+                className="auth__main--input font-sans"
                 placeholder="Email Address"
                 type={"email"}
                 onChange={(e) => setEmail(e.target.value)}
               />
               <input
-                className="auth__main--input"
+                className="auth__main--input font-sans"
                 placeholder="Password"
                 type={"password"}
                 onChange={(e) => setPassword(e.target.value)}
@@ -202,15 +202,15 @@ export default function LoginModal() {
                 )}
               </button>
             </div>
+          <ForgotPassModal />
+          <SignupModal />
           </div>
 
           {/* Forgot Password/No Account */}
-          <ForgotPassModal />
           {/* <div className="auth__password--forgot auth__account--creation">
             Don't have an account?
           </div> */}
 
-          <SignupModal />
           <AiOutlineCloseCircle
             onClick={() => dispatch(closeLoginModal())}
             className="auth__closeModal"

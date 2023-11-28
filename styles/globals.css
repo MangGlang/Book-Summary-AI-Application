@@ -553,6 +553,7 @@ button:disabled {
   justify-content: center;
   align-items: center;
   width: 100%;
+  transition-delay: 5s 500ms;
 }
 
 .auth__modal--container {
@@ -561,6 +562,7 @@ button:disabled {
   flex-direction: column;
   align-items: center;
   background-color: white;
+  transition-delay: 5s 400ms;
   width: 400px;
   height: 525px;
   border-radius: 9px;
@@ -580,10 +582,11 @@ button:disabled {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 400px;
-  padding: 48px 32px 16px;
+  /* max-width: 400px; */
+  padding: 48px 32px 18px;
   width: 100%;
-  overflow-y: visible;
+  overflow-y: hidden;
+  overflow: auto;
 }
 
 .auth__modal--header {
@@ -699,7 +702,7 @@ button:disabled {
   margin: 0 24px;
   font-size: 14px;
   color: #394547;
-  font-weight: 500;
+  font-weight: bold;
 }
 
 .auth__main--form {
@@ -709,18 +712,26 @@ button:disabled {
 }
 
 .auth__main--input {
-  padding: 8px;
   margin-bottom: 16px;
-  color: #394547;
+  /* color: #394547; */
+  /* color: blue; */
+  font-size: 14px;
   outline: none;
+  padding-left: 12px;
   border: 2px solid #bac8ce;
   border-radius: 4px;
   height: 40px;
 }
 
+.auth__main--input::placeholder {
+  color: rgb(139, 139, 139);
+  font-weight: 500;
+}
+
 .auth__main--input:focus {
   border-color: #20ba68;
   border: 2px solid #20ba68;
+  /* color: ; */
 }
 
 /* Forgot Password/No Account */
@@ -728,7 +739,7 @@ button:disabled {
   color: #0564f1;
   font-size: 14px;
   font-weight: 300;
-  margin-bottom: 8px;
+  margin-top: 16px;
 }
 
 .auth__password--forgot:hover {
@@ -762,7 +773,7 @@ button:disabled {
   height: 32px;
   top: 10px;
   right: 10px;
-  /* transition: all 50ms ease-in-out; */
+  transition: all 200ms ease-in-out;
 }
 
 .auth__closeModal:hover {
