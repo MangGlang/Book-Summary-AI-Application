@@ -831,7 +831,7 @@ input::placeholder {
   background-color: #fbefd6;
   display: flex;
   justify-content: space-between;
-  width: calc((100% / 3) * 2);
+  /* width: calc((100% / 3) * 2); */
   gap: 24px;
   padding: 24px;
   margin-bottom: 24px;
@@ -839,7 +839,7 @@ input::placeholder {
 
 .selected__book--sub-title {
   color: #032b41;
-  font-weight: 600;
+  font-weight: 500;
   width: 40%;
 }
 
@@ -851,4 +851,11 @@ input::placeholder {
 .selected__book--content {
   display: flex;
   width: 60%;
+}
+
+.selected__book--content-style {
+  width: 42px;
+  height: 42px;
+  background-color: white;
+  border-radius: 99999999px;
 }
