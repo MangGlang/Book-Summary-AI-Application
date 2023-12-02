@@ -13,10 +13,6 @@ const Search = () => {
               placeholder="Search for books"
             />
             {/* comment */}
-            {/* comment2 */}
-            {/* comment3 */}
-            {/* comment4 */}
-            {/* comment5 */}
             {/*  */}
             {/* this is without sidebar comment */}
             <div className="absolute right-20 border-[#e1e7ea] border-l-2 " style={ { height: 35 } }></div>
