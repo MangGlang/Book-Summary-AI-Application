@@ -10,7 +10,7 @@ const Search = () => {
             <input
               className="text-sm font-sans font-medium input__field w-[100%] h-10 p-4 border-[#e1e7ea] border-2 bg-[#f1f6f4] rounded text-[#042330] relative outline-none"
               type="text"
-              placeholder="Search for bookssss"
+              placeholder="Searching for booksssssssss"
             />
             {/* comment */}
             {/*  */}
