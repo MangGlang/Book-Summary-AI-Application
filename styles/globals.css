@@ -855,6 +855,11 @@ input::placeholder {
   margin-bottom: 24px;
 }
 
+.book__container {
+  padding: 40px 0 8px 0px;
+  width: 100%;
+}
+
 .selected__book--sub-title {
   color: #032b41;
   font-weight: 500;

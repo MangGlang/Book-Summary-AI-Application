@@ -24,11 +24,11 @@ const SelectedBook = () => {
   return (
     <>
       <div className="row ">
-        <div className="container">
+        <div className="book__container">
           <h1 className="for-you__tile">Selected just for you</h1>
           {/*  xl:w-full 2xl:w-3.5/5 */}
           <a href="" className="selected__book flex w-full xl:w-[70%]">
-            <div className="selected__book--sub-title">
+            <div className="selected__book--sub-title tracking-wide leading-5">
               How Constant Innovation Creates Radically Successful Businesses
             </div>
             <div className="selected__book--divider"></div>
