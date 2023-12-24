@@ -1,4 +1,5 @@
 import axios from "axios";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { LuClock2 } from "react-icons/lu";
 import { LuStar } from "react-icons/lu";
@@ -33,7 +34,7 @@ const RecommendedBooks = () => {
                   Premium
                 </div>
               ) : null}
-              <a
+              <Link
                 href={`/book/${books.id}`}
                 className="pt-8 hover:bg-[#f1f6f4] w-full h-full"
               >
@@ -60,7 +61,7 @@ const RecommendedBooks = () => {
                     </div>
                   </div>
                 </div>
-              </a>
+              </Link>
             </div>
           ))}
       </div>
