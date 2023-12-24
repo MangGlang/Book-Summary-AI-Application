@@ -883,3 +883,33 @@ input::placeholder {
   background-color: white;
   border-radius: 99999999px;
 }
+
+.sidebar__icon--wrapper {
+  position: relative;
+}
+
+.text-popup {
+  position: absolute;
+  margin-left: 8px;
+  width: full;
+  top: 50%; /* Adjust the top position as needed */
+  left: 100%; /* Position the text to the right of the icon */
+  /* transform: translate(10px, -50%); */
+  padding: 8px;
+  background-color: #ffffff;
+  /* border: 1px solid #ccc; */
+  border-radius: 9999999px;
+  color: rgb(0, 0, 0);
+  visibility: hidden; /* Hide the text by default */
+  opacity: 0; /* Set opacity to 0 for a fade-in effect */
+  transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
+}
+
+.sidebar__icon--wrapper:hover .text-popup {
+  visibility: visible; 
+  opacity: 1; 
+  transform: translate(5px, -50%); 
+  white-space: nowrap;
+  transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
+
+}

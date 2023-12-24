@@ -75,19 +75,21 @@ export default function Sidebar() {
               //     expanded ? "w-full" : "hidden"
               //   }`}
             >
+              <Link href={`/for-you`}>
               <Image
                 src={logo}
                 alt="logo"
-                width={155}
+                width={160}
                 height={40}
-                className="max-w-100"
-              />
+                className="max-w-100 hover:scale-95 transition-all ease-in-out"
+                />
+                </Link>
             </figure>
 
-            {/* Make sidebar responsiveness unusable. lazy to create new login button. */}
+            {/* Toggle Sidebar to Open/Collapse */}
             <button
               onClick={user.email ? () => setExpanded((curr) => !curr) : null}
-              className={`flex-end text-[#032b41] ${
+              className={`flex-end text-[#032b41] hover:scale-125 transition-all ease-in-out ${
                 !user.email ? "hover:cursor-not-allowed opacity-50" : ""
               }`}
               disabled={!user.email}
@@ -98,6 +100,7 @@ export default function Sidebar() {
                 <TbTransitionRight className="w-10 h-6" />
               )}
             </button>
+
           </div>
 
           <div className="flex flex-col justify-between h-full">
@@ -112,9 +115,10 @@ export default function Sidebar() {
                   }`}
                 ></div>
                 <div className="ml-5 sidebar__icon--wrapper">
-                  <AiOutlineHome className="sidebar__icon" />
-                  <div className={expandedStyling}>For you</div>
+                  <AiOutlineHome className="sidebar__icon hover:scale-125 transition-all ease-in-out" />
+                    <div className={expanded ? expandedStyling : "text-popup"}>For you</div>
                 </div>
+                
               </Link>
               <Link
                 className="sidebar__link--wrapper hover:bg-gray-200"
@@ -126,18 +130,18 @@ export default function Sidebar() {
                   }`}
                 ></div>
                 <div className="ml-5 sidebar__icon--wrapper">
-                  <BsBookmarkHeart className="sidebar__icon" />
-                  <div className={expandedStyling}>My Library</div>
+                  <BsBookmarkHeart className="sidebar__icon hover:scale-125 transition-all ease-in-out" />
+                  <div className={expanded ? expandedStyling : "text-popup"}>My Library</div>
                 </div>
               </Link>
               {/* add highlights and search icons */}
               <div className="ml-5 sidebar__link--wrapper hover:cursor-not-allowed">
-                <PiPencilLineFill className="sidebar__icon" />
-                <div className={expandedStyling}>Highlights</div>
+                <PiPencilLineFill className="sidebar__icon hover:scale-125 transition-all ease-in-out" />
+                <div className={expanded ? expandedStyling : "text-popup"}>Highlights</div>
               </div>
               <div className="ml-5 sidebar__link--wrapper hover:cursor-not-allowed">
-                <BiSearchAlt className="sidebar__icon" />
-                <div className={expandedStyling}>Search</div>
+                <BiSearchAlt className="sidebar__icon hover:scale-125 transition-all ease-in-out" />
+                <div className={expanded ? expandedStyling : "text-popup"}>Search</div>
               </div>
             </div>
             <div className="sidebar__bottom bottom-2">
@@ -152,14 +156,14 @@ export default function Sidebar() {
                   }`}
                 ></div>
                 <div className="ml-5 sidebar__icon--wrapper">
-                  <BsGear className="sidebar__icon" />
-                  <div className={expandedStyling}>Settings</div>
+                  <BsGear className="sidebar__icon hover:scale-125 transition-all ease-in-out" />
+                  <div className={expanded ? expandedStyling : "text-popup"}>Settings</div>
                 </div>
               </Link>
 
               <div className="ml-5 sidebar__link--wrapper hover:cursor-not-allowed">
-                <BiHelpCircle className="sidebar__icon" />
-                <div className={expandedStyling}>Help & Support</div>
+                <BiHelpCircle className="sidebar__icon hover:scale-125 transition-all ease-in-out " />
+                <div className={expanded ? expandedStyling : "text-popup"}>Help & Support</div>
               </div>
 
               {user && (
@@ -174,7 +178,7 @@ export default function Sidebar() {
                     <LoginModal className="flex grow" />
                   ) : (
                     <button className="ml-5 sidebar__logout--wrapper text-left">
-                      <FiLogOut className="sidebar__icon" />
+                      <FiLogOut className="sidebar__icon hover:scale-125 transition-all ease-in-out" />
                       <div className={expandedStyling}>
                         {!user.email ? (
                           <LoginModal className="" />

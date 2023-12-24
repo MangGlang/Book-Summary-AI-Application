@@ -19,7 +19,6 @@ const SelectedBook = () => {
   useEffect(() => {
     getSelectedBook();
   }, []);
-// comment for info??
 
   return (
     <>
