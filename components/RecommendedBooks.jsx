@@ -27,8 +27,16 @@ const RecommendedBooks = () => {
       <div className="book__container flex overflow-scroll snap-x">
         {recommendedBooks &&
           recommendedBooks.map((books) => (
-            <div className="flex flex-col snap-start">
-              <a href={`/book/${books.id}`} className="pt-8 hover:bg-[#f1f6f4] w-full h-full">
+            <div className="flex flex-col snap-start relative">
+              {books.subscriptionRequired ? (
+                <div className="flex absolute top-0 right-0 bg-[#032b41] text-white font-sans rounded-full px-2">
+                  Premium
+                </div>
+              ) : null}
+              <a
+                href={`/book/${books.id}`}
+                className="pt-8 hover:bg-[#f1f6f4] w-full h-full"
+              >
                 <img
                   src={books.imageLink}
                   className="mx-4 w-[11rem] max-w-none"

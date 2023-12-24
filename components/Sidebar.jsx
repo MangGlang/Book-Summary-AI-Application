@@ -55,7 +55,7 @@ export default function Sidebar() {
   }
   // states of sidebar elements
   const [expanded, setExpanded] = useState(true);
-  const expandedStyling = `ml-1 overflow-hidden truncate transition-all ease-in-out duration-300 
+  const expandedStyling = `overflow-hidden truncate transition-all ease-in-out duration-300 
   ${expanded ? "w-[70%] duration-300" : "w-0 duration-0"}`;
 
   console.log("user email: " + user.email);
@@ -78,9 +78,9 @@ export default function Sidebar() {
               <Image
                 src={logo}
                 alt="logo"
-                width={150}
+                width={155}
                 height={40}
-                className="max-w-none"
+                className="max-w-100"
               />
             </figure>
 
