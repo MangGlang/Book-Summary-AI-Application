@@ -13,12 +13,15 @@ import { LuBookOpenCheck } from "react-icons/lu";
 import { useSelector, useDispatch } from "react-redux";
 import { closeLoginModal, openLoginModal } from "@/redux/modalSlice";
 import LoginModal from "@/components/modals/LoginModal";
+import { BsBookmark } from "react-icons/bs";
+import { BsBookmarkCheckFill } from "react-icons/bs";
 // import UserLoginModal from "../../components/wrapper/UserLoginModal";
 
 import CustomButtons from "../../components/CustomLoginButton";
 
 const Book = () => {
   const [bookData, setBookData] = useState(null);
+  const [bookmark, setBookmark] = useState(false);
 
   const router = useRouter();
   const { id } = router.query;
@@ -39,6 +42,10 @@ const Book = () => {
     // console.log("bookdata " + bookData)
   }
 
+  function manageBookmark() {
+    setBookmark((prevBookmark) => !prevBookmark);
+  }
+
   const handleLoginButtonClick = () => {
     dispatch(() => openLoginModal());
   };
@@ -54,29 +61,22 @@ const Book = () => {
 
         <div className="flex-grow ">
           <Search />
-          <div>
+          <div className="flex">
             {bookData && (
               <div className="row">
-                <div className="container">
+                <div className="container flex">
+                  <div className="inner__wrapper w-[100%]">
+
                   <div className="flex relative flex-wrap">
-                    <div className="for-you__tile font-sans !important text-3xl tracking-normal max-w-[70%] ">
+                    <div className="for-you__tile font-sans !important text-3xl tracking-normal max-w-[100%] ">
                       {bookData.title}
                       {bookData.subscriptionRequired ? " (Premium)" : null}
                     </div>
-                    <figure className="flex flex-wrap">
-                      helo
-                      <img
-                        className="absolute right-0 top-0"
-                        src={`${bookData.imageLink}`}
-                        width={300}
-                        alt=""
-                      />
-                    </figure>
                   </div>
                   <div className="font-bold text-[#032b41]">
                     {bookData.author}
                   </div>
-                  <div className="text-xl font-[100] max-w-[70%] text-[#3e565e] border-spacing-0.5 py-4 border-b">
+                  <div className="text-xl font-[100] max-w-[100%] text-[#3e565e] border-spacing-0.5 py-4 border-b">
                     {bookData.subTitle}
                   </div>
                   <br></br>
@@ -120,7 +120,7 @@ const Book = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="text-xl font-[100] max-w-[70%] text-[#3e565e] border-spacing-0.5 py-2 border-b"></div>
+                  <div className="text-xl font-[100] max-w-[100%] text-[#3e565e] border-spacing-0.5 py-2 border-b"></div>
 
                   <div className="flex">
                     <CustomButtons
@@ -134,11 +134,72 @@ const Book = () => {
                       customText="Listen"
                     />
                   </div>
-                  
+
+                  <button
+                    className="text-[#0365f2] font-sans font-[600] text-lg flex items-center
+                    inner-book__bookmark"
+                    onClick={manageBookmark}
+                  >
+                    {bookmark ? (
+                      <>
+                        <BsBookmark className="mr-2 text-xl" /> Add title to My
+                        Library
+                      </>
+                    ) : (
+                      <>
+                        <BsBookmarkCheckFill className="mr-2 text-xl" />
+                        Saved in My Library
+                      </>
+                    )}
+                  </button>
+                  <div className="font-bold font-sans text-lg text-[#032b41] mt-8">
+                    What's it about?
+                  </div>
+
+                  {/* bg-[#032841] */}
+
+                  {/* TODO: make loop that prints out the number of tags based on the tag length & dynamically render using tags[i]? */}
+
+                  <div className="flex mt-4">
+                    {/* {bookData && bookData.tags[0] ? (
+                    <button className="flex items-center justify-center font-sm p-3 w-[190px] rounded bg-[#032841] text-white hover:cursor-not-allowed text-sm font-bold whitespace-nowrap">
+                      <p>{bookData.tags[0]}</p>
+                    </button>
+                  ) : (
+                    <button className="flex items-center justify-center p-3 w-[190px] rounded bg-[#032841] text-white hover:cursor-not-allowed ml-4 text-sm font-bold whitespace-nowrap">
+                      <p>{bookData.tags[1]}</p>
+                    </button>
+                  )}
+                  {bookData.map((tags =>(
+                    {}
+                  )))} */}
+                  </div>
+
+                  <div className="text-sm text-[#032b41]">
+                    {bookData.bookDescription}
+                  </div>
                 </div>
-              </div>
+
+                {/* <div className="container"> */}
+
+                <div className="flex">
+                  <figure className="flex">
+                  <img
+                    // When breakpoint of 1024 pixels or so is met, then set position to not absolute.
+                    // make img occupy space on the page, bc absolute does not occupy space respective of elements
+                    // conditionally render {image above top of components by making it relative}
+                    className="w-[425px] h-[300px] md:block ml-8"
+                    src={`${bookData.imageLink}`}
+                    alt=""
+                  />
+                </figure>
+                </div>
+                </div>
+                </div>
             )}
           </div>
+
+          {/* img section */}
         </div>
       </div>
     </section>

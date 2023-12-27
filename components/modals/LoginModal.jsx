@@ -44,7 +44,9 @@ export default function LoginModal() {
         "guest123321@gmail.com"
       );
       dispatch(closeLoginModal());
-      // router.push("/for-you");
+      if (router.pathname === "/") {
+        router.push("/for-you")
+      }
     } catch (error) {
       alert(error.message);
     }
@@ -82,7 +84,9 @@ export default function LoginModal() {
         console.log(result);
         setGoogleLoading(false);
         // set up if user is authenticated, then push. otherwise, dont push user to new page if not authent.
-        // router.push("/for-you");
+        if (router.pathname === "/") {
+          router.push("/for-you")
+        }
       });
       dispatch(closeLoginModal());
     } catch (error) {
@@ -97,7 +101,9 @@ export default function LoginModal() {
       if (!currentUser) return;
 
       //  if user is signed in, then handle redux actions
-      // router.push("/for-you");
+      if (router.pathname === "/") {
+        router.push("/for-you")
+      }
       console.log(currentUser);
       dispatch(
         setUser({
