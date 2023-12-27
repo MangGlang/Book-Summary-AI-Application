@@ -9,11 +9,26 @@ import { LuClock2 } from "react-icons/lu";
 import { LuStar } from "react-icons/lu";
 import { LuMic } from "react-icons/lu";
 import { LuLightbulb } from "react-icons/lu";
+import { LuBookOpenCheck } from "react-icons/lu";
+import { useSelector, useDispatch } from "react-redux";
+import { closeLoginModal, openLoginModal } from "@/redux/modalSlice";
+import LoginModal from "@/components/modals/LoginModal";
+// import UserLoginModal from "../../components/wrapper/UserLoginModal";
+
+import CustomButtons from "../../components/CustomLoginButton";
 
 const Book = () => {
   const [bookData, setBookData] = useState(null);
+
   const router = useRouter();
   const { id } = router.query;
+
+  // Access redux store and open loginModal if user is not authenticated
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+  // useSelector hook to get modal state
+  const modalState = useSelector((state) => state.modal);
+  console.log(user);
 
   async function getBookData() {
     const { data } = await axios.get(
@@ -23,6 +38,10 @@ const Book = () => {
     setBookData(data);
     // console.log("bookdata " + bookData)
   }
+
+  const handleLoginButtonClick = () => {
+    dispatch(() => openLoginModal());
+  };
 
   useEffect(() => {
     getBookData();
@@ -39,12 +58,13 @@ const Book = () => {
             {bookData && (
               <div className="row">
                 <div className="container">
-                  <div className="flex relative">
+                  <div className="flex relative flex-wrap">
                     <div className="for-you__tile font-sans !important text-3xl tracking-normal max-w-[70%] ">
                       {bookData.title}
                       {bookData.subscriptionRequired ? " (Premium)" : null}
                     </div>
-                    <figure>
+                    <figure className="flex flex-wrap">
+                      helo
                       <img
                         className="absolute right-0 top-0"
                         src={`${bookData.imageLink}`}
@@ -100,8 +120,21 @@ const Book = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="text-xl font-[100] max-w-[70%] text-[#3e565e] border-spacing-0.5 py-2 border-b">
+                  <div className="text-xl font-[100] max-w-[70%] text-[#3e565e] border-spacing-0.5 py-2 border-b"></div>
+
+                  <div className="flex">
+                    <CustomButtons
+                      buttonStyle="flex items-center justify-center p-3 w-[150px] rounded bg-[#032841] text-white hover:opacity-80 transition-all duration-300 ease-in-out"
+                      logo={<LuBookOpenCheck className="text-2xl" />}
+                      customText="Read"
+                    />
+                    <CustomButtons
+                      buttonStyle="ml-4 flex items-center justify-center p-3 w-[150px] rounded bg-[#032841] text-white hover:opacity-80 transition-all duration-300 ease-in-out"
+                      logo={<LuMic className="text-2xl" />}
+                      customText="Listen"
+                    />
                   </div>
+                  
                 </div>
               </div>
             )}

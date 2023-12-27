@@ -63,7 +63,7 @@ export default function Sidebar() {
   return (
     <>
       {/* TODO: Smoother hidden animation to hide sdiebar when md breakpoint is met */}
-      <div className="bg-[#f7faf9] w-100 h-screen hidden md:block border-r shadow-sm sticky top-0">
+      <div className="bg-[#f7faf9] logo__style h-screen md:block border-r shadow-sm sticky top-0">
         <div className="sidebar__wrapper flex flex-col justify-between h-full">
           <div
             className={`flex p-4 ${expanded ? "space-x-4" : "items-center"}`}
