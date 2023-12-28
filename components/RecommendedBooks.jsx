@@ -30,7 +30,7 @@ const RecommendedBooks = () => {
           recommendedBooks.map((books) => (
             <div className="flex flex-col snap-start relative">
               {books.subscriptionRequired ? (
-                <div className="flex absolute top-0 right-0 bg-[#032b41] text-white font-sans rounded-full px-2">
+                <div className="flex absolute top-0 right-0 bg-[#032b41] text-white font-sans rounded-full px-2 text-sm font-semibold">
                   Premium
                 </div>
               ) : null}
