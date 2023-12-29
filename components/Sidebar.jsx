@@ -55,8 +55,8 @@ export default function Sidebar() {
   }
   // states of sidebar elements
   const [expanded, setExpanded] = useState(true);
-  const expandedStyling = `overflow-hidden truncate transition-all ease-in-out duration-300 
-  ${expanded ? "w-[70%] duration-300" : "w-0 duration-0"}`;
+  const expandedStyling = `overflow-hidden truncate 
+  ${expanded ? "w-[70%] duration-300" : "hidden duration-0"}`;
 
   console.log("user email: " + user.email);
 
@@ -89,7 +89,7 @@ export default function Sidebar() {
             {/* Toggle Sidebar to Open/Collapse */}
             <button
               onClick={user.email ? () => setExpanded((curr) => !curr) : null}
-              className={`flex-end text-[#032b41] hover:scale-125 transition-all ease-in-out ${
+              className={`flex-end text-[#032b41] hover:scale-125 transition-all ease-in-out duration-300 ${
                 !user.email ? "hover:cursor-not-allowed opacity-50" : ""
               }`}
               disabled={!user.email}
