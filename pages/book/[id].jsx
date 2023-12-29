@@ -17,8 +17,7 @@ import { BsBookmark } from "react-icons/bs";
 import { BsBookmarkCheckFill } from "react-icons/bs";
 // import UserLoginModal from "../../components/wrapper/UserLoginModal";
 
-import CustomButtons from "../../components/CustomLoginButton";
-import BookTags from "../../components/BookTags";
+import CustomButtons from "../../components/CustomButtons";
 
 const Book = () => {
   const [bookData, setBookData] = useState(null);
@@ -33,26 +32,18 @@ const Book = () => {
   // Access redux store and open loginModal if user is not authenticated
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
+
   // useSelector hook to get modal state
   const modalState = useSelector((state) => state.modal);
-  console.log(user);
+  // console.log("user : " + user.username);
+  // console.log("sub status: " + user.subscriptionStatus);
 
   async function getBookData() {
     const { data } = await axios.get(
       `https://us-central1-summaristt.cloudfunctions.net/getBook?id=${id}`
     );
-    // console.log(await axios.get(`https://us-central1-summaristt.cloudfunctions.net/getBook?id=${id}`))
     setBookData(data);
     setBookDataTags(data.tags);
-    // setBookDataTags(data.tags);
-    // console.log("data " + bookData);
-    // console.log(
-    //   "bookdataTags " + bookDataTags.map((tags, index) => <h1 key={index}>{tags}</h1>)
-    // );
-    // console.log("bookdata " + bookData)
-    // console.log(bookData.tags[0])
-    // console.log(bookData.tags[1])
-    // console.log("array " + bookData.tags)
   }
 
   function manageBookmark() {
@@ -62,6 +53,11 @@ const Book = () => {
   const handleLoginButtonClick = () => {
     dispatch(() => openLoginModal());
   };
+
+  //           onClick={
+  // user.subscriptionStatus == "Basic" ? router.push("/")
+  //           }
+  // create function to handle router.push when user status is "Basic"
 
   useEffect(() => {
     getBookData();
@@ -135,15 +131,22 @@ const Book = () => {
                     <div className="text-xl font-[100] max-w-[100%] text-[#3e565e] border-spacing-0.5 py-2 border-b"></div>
 
                     <div className="flex">
-                      <CustomButtons
-                        buttonStyle="flex items-center justify-center p-3 w-[150px] rounded bg-[#032841] text-white hover:opacity-80 transition-all duration-300 ease-in-out"
-                        logo={<LuBookOpenCheck className="text-2xl" />}
-                        customText="Read"
-                      />
+                      {user && (
+                        <CustomButtons
+                          buttonStyle="flex items-center justify-center p-3 w-[150px] rounded bg-[#032841] text-white hover:opacity-80 transition-all duration-300 ease-in-out"
+                          logo={<LuBookOpenCheck className="text-2xl" />}
+                          customText="Read"
+                          id={id}
+                          subRequired={bookData.subscriptionRequired}
+                        />
+                      )}
+
                       <CustomButtons
                         buttonStyle="ml-4 flex items-center justify-center p-3 w-[150px] rounded bg-[#032841] text-white hover:opacity-80 transition-all duration-300 ease-in-out"
                         logo={<LuMic className="text-2xl" />}
                         customText="Listen"
+                        id={id}
+                        subRequired={bookData.subscriptionRequired}
                       />
                     </div>
 
@@ -168,33 +171,17 @@ const Book = () => {
                       What's it about?
                     </div>
 
-                    {/* bg-[#032841] */}
-
-                    {/* TODO: make loop that prints out the number of tags based on the tag length & dynamically render using tags[i]? */}
-
                     <div className="flex mt-4">
-                      {/* {bookData && bookData.tags[0] ? (
-                    <button className="flex items-center justify-center font-sm p-3 w-[190px] rounded bg-[#032841] text-white hover:cursor-not-allowed text-sm font-bold whitespace-nowrap">
-                      <p>{bookData.tags[0]}</p>
-                    </button>
-                  ) : (
-                    <button className="flex items-center justify-center p-3 w-[190px] rounded bg-[#032841] text-white hover:cursor-not-allowed ml-4 text-sm font-bold whitespace-nowrap">
-                      <p>{bookData.tags[1]}</p>
-                    </button>
-                  )
-                  } */}
-                      {/* {bookData.map((tags =>(
-                    {}
-                  )))} */}
-
-                      {/* {console.log(bookData.tags)} */}
-                      {/* {<BookTags />} */}
-
                       {bookTagsArray.map((tags, index) => (
                         <div className="flex items-center mb-4">
-                          <button className="flex mr-4 justify-center font-sm p-3 w-[100%] rounded bg-[#f1f6f4] text-[#032841] hover:cursor-not-allowed text-sm font-bold whitespace-nowrap" key={index}>{tags}</button>
+                          <button
+                            className="flex mr-4 justify-center font-sm p-3 w-[100%] rounded bg-[#f1f6f4] text-[#032841] hover:cursor-not-allowed text-sm font-bold whitespace-nowrap"
+                            key={index}
+                          >
+                            {tags}
+                          </button>
                         </div>
-                      ))} 
+                      ))}
                     </div>
 
                     <div className="text-md text-[#032b41]">

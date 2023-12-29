@@ -865,7 +865,7 @@ input::placeholder {
   background-color: #fbefd6;
   display: flex;
   justify-content: space-between;
-  /* width: calc((100% / 3) * 2); */
+  width: calc((100% / 3) * 2);
   gap: 24px;
   padding: 24px;
   margin-bottom: 24px;
@@ -943,4 +943,14 @@ input::placeholder {
   color: #044298 !important;
   transition: all 300ms ease-in-out;
   
+}
+
+
+
+/* Responsive Design */
+
+@media (max-width: 1200px) {
+  .selected__book {
+    width: 100%;
+  }
 }

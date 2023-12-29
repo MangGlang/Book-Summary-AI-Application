@@ -7,14 +7,19 @@ import SuggestedBooks from "@/components/SuggestedBooks";
 export default function forYou() {
   return (
     <section id="for-you">
-      <div className="relative flex">
+      <div className="flex">
         <Sidebar />
 
-        <div className="flex-grow ">
+        <div className="flex-row max-w-[100%] w-full">
           <Search />
-          <SelectedBook />
-          <RecommendedBooks />
-          <SuggestedBooks />
+          <div className="row">
+            <div className="container">
+              <SelectedBook />
+              <RecommendedBooks />
+              <SuggestedBooks />
+              
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -20,9 +20,8 @@ const SuggestedBooks = () => {
   }, []);
 
   return (
-    <div className="row">
-      <div className="container">
-        <div className="for-you__tile">Suggested For You</div>
+    <>
+        <div className="for-you__tile mt-6">Suggested For You</div>
         <p className="font-thin text-[#394547] text-[17px] text-base font-sans">
           Browse those books
         </p>
@@ -66,8 +65,7 @@ const SuggestedBooks = () => {
               </div>
             ))}
         </div>
-      </div>
-    </div>
+    </>
   );
 };
 

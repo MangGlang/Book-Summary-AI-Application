@@ -22,11 +22,10 @@ const SelectedBook = () => {
 
   return (
     <>
-      <div className="row ">
         <div className="book__container">
           <h1 className="for-you__tile">Selected just for you</h1>
           {/*  xl:w-full 2xl:w-3.5/5 */}
-          <a href="" className="selected__book flex w-full xl:w-[70%]">
+          <a href="" className="selected__book flex">
             <div className="selected__book--sub-title tracking-wide leading-5">
               How Constant Innovation Creates Radically Successful Businesses
             </div>
@@ -52,7 +51,6 @@ const SelectedBook = () => {
             </div>
           </a>
         </div>
-      </div>
     </>
   );
 };

@@ -66,25 +66,18 @@ export default function Sidebar() {
       <div className="bg-[#f7faf9] logo__style h-screen md:block border-r shadow-sm sticky top-0">
         <div className="sidebar__wrapper flex flex-col justify-between h-full">
           <div
-            className={`flex p-4 ${expanded ? "space-x-4" : "items-center"}`}
+            className={`flex p-3 ${expanded ? "space-x-4" : "items-center"}`}
           >
-            <figure
-              className={expandedStyling}
-              // <figure
-              //   className={`overflow-hidden transition-all ease-in-out duration-300 ${
-              //     expanded ? "w-full" : "hidden"
-              //   }`}
-            >
+            <figure className={expandedStyling}>
               <Link href={`/for-you`}>
-              <img
-                src="/assets/logo.png"
-                alt="logo"
-                width={128}
-                height={40}
-                className="max-w-none"
-                
+                <img
+                  src="/assets/logo.png"
+                  alt="logo"
+                  width={128}
+                  height={40}
+                  className="max-w-none hover:scale-95 ease-in-out duration-300"
                 />
-                </Link>
+              </Link>
             </figure>
 
             {/* Toggle Sidebar to Open/Collapse */}
@@ -101,7 +94,6 @@ export default function Sidebar() {
                 <TbTransitionRight className="w-10 h-6" />
               )}
             </button>
-
           </div>
 
           <div className="flex flex-col justify-between h-full">
@@ -117,9 +109,10 @@ export default function Sidebar() {
                 ></div>
                 <div className="ml-5 sidebar__icon--wrapper">
                   <AiOutlineHome className="sidebar__icon hover:scale-125 transition-all ease-in-out" />
-                    <div className={expanded ? expandedStyling : "text-popup"}>For you</div>
+                  <div className={expanded ? expandedStyling : "text-popup"}>
+                    For you
+                  </div>
                 </div>
-                
               </Link>
               <Link
                 className="sidebar__link--wrapper hover:bg-gray-200"
@@ -132,17 +125,23 @@ export default function Sidebar() {
                 ></div>
                 <div className="ml-5 sidebar__icon--wrapper">
                   <BsBookmarkHeart className="sidebar__icon hover:scale-125 transition-all ease-in-out" />
-                  <div className={expanded ? expandedStyling : "text-popup"}>My Library</div>
+                  <div className={expanded ? expandedStyling : "text-popup"}>
+                    My Library
+                  </div>
                 </div>
               </Link>
               {/* add highlights and search icons */}
               <div className="ml-5 sidebar__link--wrapper hover:cursor-not-allowed">
                 <PiPencilLineFill className="sidebar__icon hover:scale-125 transition-all ease-in-out" />
-                <div className={expanded ? expandedStyling : "text-popup"}>Highlights</div>
+                <div className={expanded ? expandedStyling : "text-popup"}>
+                  Highlights
+                </div>
               </div>
               <div className="ml-5 sidebar__link--wrapper hover:cursor-not-allowed">
                 <BiSearchAlt className="sidebar__icon hover:scale-125 transition-all ease-in-out" />
-                <div className={expanded ? expandedStyling : "text-popup"}>Search</div>
+                <div className={expanded ? expandedStyling : "text-popup"}>
+                  Search
+                </div>
               </div>
             </div>
             <div className="sidebar__bottom bottom-2">
@@ -158,21 +157,22 @@ export default function Sidebar() {
                 ></div>
                 <div className="ml-5 sidebar__icon--wrapper">
                   <BsGear className="sidebar__icon hover:scale-125 transition-all ease-in-out" />
-                  <div className={expanded ? expandedStyling : "text-popup"}>Settings</div>
+                  <div className={expanded ? expandedStyling : "text-popup"}>
+                    Settings
+                  </div>
                 </div>
               </Link>
 
               <div className="ml-5 sidebar__link--wrapper hover:cursor-not-allowed">
                 <BiHelpCircle className="sidebar__icon hover:scale-125 transition-all ease-in-out " />
-                <div className={expanded ? expandedStyling : "text-popup"}>Help & Support</div>
+                <div className={expanded ? expandedStyling : "text-popup"}>
+                  Help & Support
+                </div>
               </div>
 
               {user && (
                 <div
-                  // onClick={() => dispatch(openLoginModal())}
                   onClick={handleSignOut}
-                  // onClick={openLoginModal}
-
                   className=" hover:bg-gray-200 hover:cursor-pointer"
                 >
                   {!user.email ? (

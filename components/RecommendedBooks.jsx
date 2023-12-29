@@ -20,7 +20,7 @@ const RecommendedBooks = () => {
   }, []);
 
   return (
-    <div className="row">
+    <>
       <div className="for-you__tile">Recommended For You</div>
       <p className="font-thin text-[#394547] text-[17px] font-sans">
         We think you'll like these
@@ -65,7 +65,7 @@ const RecommendedBooks = () => {
             </div>
           ))}
       </div>
-    </div>
+    </>
   );
 };
 
