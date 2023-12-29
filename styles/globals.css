@@ -910,14 +910,17 @@ input::placeholder {
   top: 50%; /* Adjust the top position as needed */
   left: 100%; /* Position the text to the right of the icon */
   /* transform: translate(10px, -50%); */
-  padding: 8px;
-  background-color: #ffffff;
+  padding: 6px;
+  background-color: #032b41;
   /* border: 1px solid #ccc; */
   border-radius: 9999999px;
-  color: rgb(0, 0, 0);
+  color: white;
+  font-weight: 600;
   visibility: hidden; /* Hide the text by default */
   opacity: 0; /* Set opacity to 0 for a fade-in effect */
-  transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out;
+  position: absolute;
+  z-index: 1;
 }
 
 .sidebar__icon--wrapper:hover .text-popup {
@@ -925,7 +928,9 @@ input::placeholder {
   opacity: 1; 
   transform: translate(5px, -50%); 
   white-space: nowrap;
-  transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out;
+  position: absolute;
+  z-index: 1;
 }
 
 /* Inner book Details */

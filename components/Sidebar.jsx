@@ -55,8 +55,8 @@ export default function Sidebar() {
   }
   // states of sidebar elements
   const [expanded, setExpanded] = useState(true);
-  const expandedStyling = `overflow-hidden truncate 
-  ${expanded ? "w-[70%] duration-300" : "hidden duration-0"}`;
+  const expandedStyling = `overflow-hidden truncate ease-in-out
+  ${expanded ? "" : "hidden duration-0"}`;
 
   console.log("user email: " + user.email);
 
@@ -76,12 +76,13 @@ export default function Sidebar() {
               //   }`}
             >
               <Link href={`/for-you`}>
-              <Image
-                src={logo}
+              <img
+                src="/assets/logo.png"
                 alt="logo"
-                width={160}
+                width={128}
                 height={40}
-                className="max-w-100 hover:scale-95 transition-all ease-in-out"
+                className="max-w-none"
+                
                 />
                 </Link>
             </figure>
