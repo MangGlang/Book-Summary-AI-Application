@@ -8,16 +8,19 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        roboto: ["Roboto", "sans-serif"],
+      },
+    },
   },
   plugins: [],
-  corePlugins: {
-  },
+  corePlugins: {},
   // Apply global styles to all elements
   style: {
-    '*': {
-      '-webkit-font-smoothing': 'antialiased',
-      '-moz-osx-font-smoothing': 'grayscale',
+    "*": {
+      "-webkit-font-smoothing": "antialiased",
+      "-moz-osx-font-smoothing": "grayscale",
       // Other global styles can be added here
     },
   },

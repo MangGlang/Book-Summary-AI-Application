@@ -54,11 +54,6 @@ const Book = () => {
     dispatch(() => openLoginModal());
   };
 
-  //           onClick={
-  // user.subscriptionStatus == "Basic" ? router.push("/")
-  //           }
-  // create function to handle router.push when user status is "Basic"
-
   useEffect(() => {
     getBookData();
   }, [id]);
@@ -84,7 +79,7 @@ const Book = () => {
                     <div className="font-bold text-[#032b41]">
                       {bookData.author}
                     </div>
-                    <div className="text-xl font-[100] max-w-[100%] text-[#3e565e] border-spacing-0.5 py-4 border-b">
+                    <div className="text-xl font-[100] max-w-[100%] text-[#3e565e] py-4 border-b">
                       {bookData.subTitle}
                     </div>
                     <br></br>
