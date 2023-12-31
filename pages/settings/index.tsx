@@ -50,6 +50,11 @@ export default function Settings() {
                       {!user.email
                         ? "N/A: Please login."
                         : user.subscriptionStatus}
+                      {user.subscriptionStatus == "Basic" ? (
+                        <button className="flex flex-col text-[#032b41] bg-[#2bd97c] font-medium p-3 mt-2 rounded">
+                          Upgrade to Premium
+                        </button>
+                      ) : null}
                     </p>
                   </div>
                   <div className="flex flex-col">
