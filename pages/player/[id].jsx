@@ -1,15 +1,14 @@
 import axios from "axios";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import Sidebar from "@/components/Sidebar";
 import Search from "@/components/Search";
-import { MdTimer10 } from "react-icons/md";
-import { FaChevronLeft } from "react-icons/fa";
-import { FaChevronRight } from "react-icons/fa";
-import { FaPlayCircle } from "react-icons/fa";
+
+import AudioPlayer from "../../components/AudioPlayer";
 
 const Player = () => {
+  // State variables
   const [bookData, setBookData] = useState(null);
 
   async function getBookData() {
@@ -52,42 +51,26 @@ const Player = () => {
         </div>
       </div>
       {/* TODO: Implement audio player below sidebar and summary; "Logout feature is currently shown on overscroll" */}
-      <div className="bg-[#042330] h-[80px] sticky w-full bottom-0 flex items-center justify-center px-10">
-        {bookData &&
+      {bookData && (
+        <div className="bg-[#042330] h-[80px] sticky w-full bottom-0 flex items-center justify-center px-10">
           <div className="flex  w-[33%]">
-          <figure>
-            <img src={bookData.imageLink} width={48} height={48} alt="" />
-          </figure>
-          <div className="flex-row pl-3">
-            <div className="text-white font-sans text-sm font-semibold">
-              {bookData.title}
-            </div>
-            <div className="text-[#bac8ce] text-sm font-sans font-semibold">
-              {bookData.author}
+            <figure>
+              <img src={bookData.imageLink} width={48} height={48} alt="" />
+            </figure>
+            <div className="flex-row pl-3">
+              <div className="text-white font-sans text-sm font-semibold">
+                {bookData.title}
+              </div>
+              <div className="text-[#bac8ce] text-sm font-sans font-semibold">
+                {bookData.author}
+              </div>
             </div>
           </div>
-        </div>}
-
-        <div className="flex w-[33%] mx-auto items-center justify-center">
-          <button className="flex text-2xl text-white hover:scale-110 duration-300 ease-in-out">
-            <FaChevronLeft />
-            <MdTimer10 />
-          </button>
-
-          <button>
-            <FaPlayCircle className="text-white mx-6 text-5xl hover:scale-110 duration-300 ease-in-out" />
-          </button>
-
-          <button className="flex text-2xl text-white hover:scale-110 duration-300 ease-in-out">
-            <MdTimer10 />
-            <FaChevronRight />
-          </button>
+          <div className="flex w-[66%] mx-auto items-center justify-center">
+            <AudioPlayer audioSrc={bookData.audioLink} />
+          </div>
         </div>
-
-        <div className="w-[33%]">
-          {bookData.audioLink}
-        </div>
-      </div>
+      )}
     </section>
   );
 };
