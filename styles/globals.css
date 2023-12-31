@@ -992,6 +992,15 @@ input[type="range"]:active::-moz-range-thumb {
   margin: 0;
 }
 
+/* Choosing User Plans */
+.plan__header--wrapper {
+  
+}
+
+.pricing__top--style {
+  border-radius: 180px 180px 0 0;
+}
+
 /* Responsive Design */
 
 @media (max-width: 1200px) {

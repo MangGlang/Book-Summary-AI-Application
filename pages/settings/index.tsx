@@ -10,6 +10,10 @@ export default function Settings() {
   const router = useRouter();
   const user = useSelector((state) => state.user);
 
+  function routeUserToPlans() {
+    router.push("/choose-plan");
+  }
+
   return (
     <section id="for-you">
       <div className="flex">
@@ -51,7 +55,9 @@ export default function Settings() {
                         ? "N/A: Please login."
                         : user.subscriptionStatus}
                       {user.subscriptionStatus == "Basic" ? (
-                        <button className="flex flex-col text-[#032b41] bg-[#2bd97c] font-medium p-3 mt-2 rounded">
+                        <button 
+                        onClick={routeUserToPlans}
+                        className="flex flex-col text-[#032b41] bg-[#2bd97c] font-medium p-3 mt-2 rounded">
                           Upgrade to Premium
                         </button>
                       ) : null}

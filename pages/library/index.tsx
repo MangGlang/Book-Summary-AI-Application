@@ -12,9 +12,9 @@ export default function Library() {
 
         <div className="flex-grow ">
           <Search />
-          <SelectedBook />
-          <RecommendedBooks />
-          <SuggestedBooks />
+          <div className="container row mx-auto justify-center items-center">
+            Hello World!
+          </div>
         </div>
       </div>
     </section>
