@@ -5,6 +5,10 @@ import RecommendedBooks from "@/components/RecommendedBooks";
 import SuggestedBooks from "@/components/SuggestedBooks";
 import Footer from "@/components/Footer";
 
+import PlansFeatures from "@/components/PlansFeatures"
+
+
+
 export default function forYou() {
   return (
     <section id="choose-plan">
@@ -30,8 +34,8 @@ export default function forYou() {
           </figure>
         </div>
       </div>
-      <div className="w-screen h-screen">
-        hlelo world
+      <div className="w-screen h-screen mx-auto grid justify-center">
+        <PlansFeatures />
       </div>
 
       <Footer />
