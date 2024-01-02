@@ -6,9 +6,9 @@ import { FaHandshake } from "react-icons/fa6";
 
 const plansFeatures = () => {
   return (
-    <>
-      <div className="features__wrapper !gap-[32px] py-16">
-        <div className="features !w-[330px]">
+    <div className="features__wrapper my-6 items-center flex justify-center">
+      <div className="flex gap-[40px]">
+        <div className="features">
           <div className="features__icon">
             <AiFillFileText />
           </div>
@@ -17,7 +17,7 @@ const plansFeatures = () => {
             books to read
           </div>
         </div>
-        <div className="features !w-[330px]">
+        <div className="features">
           <div className="features__icon">
             <RiPlantFill />
           </div>
@@ -26,7 +26,7 @@ const plansFeatures = () => {
             Summarist everyday
           </div>
         </div>
-        <div className="features !w-[330px]">
+        <div className="features">
           <div className="features__icon">
             <FaHandshake />
           </div>
@@ -36,7 +36,7 @@ const plansFeatures = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

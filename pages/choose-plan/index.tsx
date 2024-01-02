@@ -1,13 +1,10 @@
-import Sidebar from "@/components/Sidebar";
-import Search from "@/components/Search";
-import SelectedBook from "@/components/SelectedBook";
-import RecommendedBooks from "@/components/RecommendedBooks";
-import SuggestedBooks from "@/components/SuggestedBooks";
 import Footer from "@/components/Footer";
+import Plans from "@/components/Plans";
 
-import PlansFeatures from "@/components/PlansFeatures"
+import PlansFeatures from "@/components/PlansFeatures";
+import { useState } from "react";
 
-
+import { FaRegCircle, FaRegDotCircle } from "react-icons/fa";
 
 export default function forYou() {
   return (
@@ -34,8 +31,31 @@ export default function forYou() {
           </figure>
         </div>
       </div>
-      <div className="w-screen h-screen mx-auto grid justify-center">
-        <PlansFeatures />
+
+      <div className="plan__features flex flex-col mx-auto items-center h-screen">
+        <div className="row">
+          <div className="container">
+            <div className="flex flex-col items-center justify.center">
+              <PlansFeatures />
+
+              <div className="section__header my-4 mb-8 text-[#032b41] text-3xl font-sans font-bold">
+                Choose the plan that fits you
+              </div>
+
+              <Plans
+                subPlan="Premium Plus Yearly"
+                costOfPlan="$12.99/year"
+                trial="7-day free trial included"
+              />
+
+              <Plans subPlan={"Premium Monthly"}
+              costOfPlan="$1.99/month"
+              trial="No trial included"
+
+              />
+            </div>
+          </div>
+        </div>
       </div>
 
       <Footer />

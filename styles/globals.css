@@ -174,10 +174,13 @@ button:disabled {
 
 /* FEATURES */
 .features__wrapper {
+  /* margin: 0 auto;
+  justify-content: center;
+  align-items: center;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   gap: 40px;
-  margin-bottom: 96px;
+  margin-bottom: 96px; */
 }
 
 .features {
@@ -185,6 +188,8 @@ button:disabled {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  max-width: 258px;
+  width: 100%;
 }
 
 .features__icon {
@@ -740,6 +745,10 @@ button:disabled {
   /* color: ; */
 }
 
+.auth__main--input.active {
+  border-color: #20ba68;
+}
+
 /* Forgot Password/No Account */
 .auth__password--forgot {
   color: #0564f1;
@@ -993,12 +1002,37 @@ input[type="range"]:active::-moz-range-thumb {
 }
 
 /* Choosing User Plans */
-.plan__header--wrapper {
+/* .plan__header--wrapper {
   
-}
+} */
 
 .pricing__top--style {
   border-radius: 180px 180px 0 0;
+}
+
+.plans__style {
+  margin-bottom: 16px;
+  /* color: #394547; */
+  /* color: blue; */
+  font-size: 14px;
+  outline: none;
+  padding-left: 12px;
+  border: 2px solid #bac8ce;
+}
+
+.plans__style::placeholder {
+  color: rgb(139, 139, 139);
+  font-weight: 500;
+}
+
+.plans__style:focus {
+  border-color: #20ba68;
+  border: 2px solid #20ba68;
+  /* color: ; */
+}
+
+.plans__style.active {
+  border-color: #20ba68;
 }
 
 /* Responsive Design */
