@@ -41,7 +41,7 @@ export default function Settings() {
                     Log in to your account to see your details.
                   </div>
                   <button>
-                    <LoginModal />
+                    <LoginModal buttonText={`Login`} />
                   </button>
                 </div>
               ) : (
@@ -55,9 +55,10 @@ export default function Settings() {
                         ? "N/A: Please login."
                         : user.subscriptionStatus}
                       {user.subscriptionStatus == "Basic" ? (
-                        <button 
-                        onClick={routeUserToPlans}
-                        className="flex flex-col text-[#032b41] bg-[#2bd97c] font-medium p-3 mt-2 rounded">
+                        <button
+                          onClick={routeUserToPlans}
+                          className="flex flex-col text-[#032b41] bg-[#2bd97c] font-medium p-3 mt-2 rounded"
+                        >
                           Upgrade to Premium
                         </button>
                       ) : null}

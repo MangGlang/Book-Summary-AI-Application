@@ -16,7 +16,7 @@ import Link from "next/link";
 import { setUser } from "@/redux/userSlice";
 import { useRouter } from "next/router";
 
-export default function LoginModal() {
+export default function LoginModal({buttonText}) {
   const [errorMessage, setErrorMessage] = useState("");
   const [guestLoading, setGuestLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
@@ -126,7 +126,7 @@ export default function LoginModal() {
         onClick={() => dispatch(openLoginModal())}
         className="btn home__cta--btn"
       >
-        Login
+        {buttonText}
       </button>
 
       {/* Modal: 2 props, "open={useState to handle open}", "onClose={funct to handle close}" */}

@@ -176,13 +176,13 @@ export default function Sidebar() {
                   className=" hover:bg-gray-200 hover:cursor-pointer"
                 >
                   {!user.email ? (
-                    <LoginModal className="flex grow" />
+                    <LoginModal className="flex grow" buttonText={`Login`} />
                   ) : (
                     <button className="ml-5 sidebar__logout--wrapper text-left">
                       <FiLogOut className="sidebar__icon hover:scale-125 transition-all ease-in-out" />
                       <div className={expandedStyling}>
                         {!user.email ? (
-                          <LoginModal className="" />
+                          <LoginModal className="" buttonText={`Login`} />
                         ) : (
                           <div>Logout</div>
                         )}

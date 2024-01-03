@@ -20,7 +20,7 @@ export default function Landing() {
                 <br className="remove--tablet" />
                 and even people who don’t like to read.
               </div>
-              <LoginModal />
+              <LoginModal buttonText={`Login`}/>
             </div>
             <figure className="landing__image--mask">
               <Image src={landing} alt="landing" />

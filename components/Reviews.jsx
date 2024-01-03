@@ -66,7 +66,7 @@ export default function Reviews() {
               </div>
             </div>
             <div className="reviews__btn--wrapper">
-              <LoginModal />
+              <LoginModal buttonText={`Login`}/>
             </div>
           </div>
         </div>
