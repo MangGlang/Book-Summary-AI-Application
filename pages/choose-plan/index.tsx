@@ -56,11 +56,11 @@ export default function forYou() {
                 trial="No trial included"
               />
               <div className="flex flex-col items-center justify-center sticky bottom-0 bg-white p-4 w-[100%]">
-                <div className="w-[300px] my-6">
+                <div className="w-[300px] my-2">
                   {/* Button should not show loginModal, instead it should direct to a stripe payment. */}
                   <LoginModal buttonText="Select your plan above" />
                 </div>
-                <p className="text-gray-400 text-xs text-nowrap">
+                <p className="text-gray-400 text-xs text-nowrap my-4">
                   Cancel your trial at any time before it ends, and you won’t be
                   charged.
                 </p>
