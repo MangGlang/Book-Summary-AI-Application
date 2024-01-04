@@ -1035,6 +1035,24 @@ input[type="range"]:active::-moz-range-thumb {
   border-color: #20ba68;
 }
 
+/* MUI Accordion */
+.MuiPaper-elevation{
+  border: none !important;
+  box-shadow: none !important;
+  border-top: 0.5px solid gray !important;
+}
+
+.MuiPaper-elevation:first-child {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.css-15v22id-MuiAccordionDetails-root {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+
 /* Responsive Design */
 
 @media (max-width: 1200px) {
