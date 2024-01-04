@@ -6,9 +6,20 @@ import LoginModal from "@/components/modals/LoginModal";
 import BasicAccordion from "@/components/BasicAccordion";
 import { useState } from "react";
 
+// Stripe setup
+import firebase from "firebase/app";
+import "firebase/firestore";
+import { auth } from "@/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { createCheckoutSession } from "@/stripe/createCheckoutSession";
+import usePremiumStatus from "@/stripe/usePremiumStatus";
+
 import { FaRegCircle, FaRegDotCircle } from "react-icons/fa";
 
 export default function forYou() {
+  const [user, userLoading] = useAuthState(auth);
+  const userIsPremium = usePremiumStatus(user);
+
   return (
     <section id="choose-plan">
       <div className="plan__header--container rounded-b-[240px] bg-[#032b41] w-[100%]">
@@ -58,7 +69,23 @@ export default function forYou() {
               <div className="flex flex-col items-center justify-center sticky bottom-0 bg-white p-4 w-[100%]">
                 <div className="w-[300px] my-2">
                   {/* Button should not show loginModal, instead it should direct to a stripe payment. */}
-                  <LoginModal buttonText="Select your plan above" />
+                  {/* <LoginModal buttonText="Select your plan above" /> */}
+                  {!user && userLoading && <h1>Loading...</h1>}
+                  {!user && userLoading && (
+                    <LoginModal buttonText="Select your plan above" />
+                  )}
+                  {user && !userLoading && (
+                    <div>
+                      <h1>hello, {user.displayName}</h1>
+                      {!userIsPremium ? (
+                        <button onClick={() => createCheckoutSession(user.uid)}>
+                          Upgrade to premium!
+                        </button>
+                      ) : (
+                        <h2>have a cookie premium customer.</h2>
+                      )}
+                    </div>
+                  )}
                 </div>
                 <p className="text-gray-400 text-xs text-nowrap my-4">
                   Cancel your trial at any time before it ends, and you won’t be
@@ -67,27 +94,26 @@ export default function forYou() {
               </div>
 
               <div className="mx-auto flex flex-col items-center justify-center row">
-             
-                  <BasicAccordion
-                    title="How does the free 7-day trial work?"
-                    body="Begin your complimentary 7-day trial with a Summarist annual membership. You are under no obligation to continue your subscription, and you will only be billed when the trial period expires. With Premium access, you can learn at your own pace and as frequently as you desire, and you may terminate your subscription prior to the conclusion of the 7-day free trial."
-                    panelNum="1"
-                  />
-                  <BasicAccordion
-                    title="Can I switch subscriptions from monthly to yearly, or yearly to monthly?"
-                    body="While an annual plan is active, it is not feasible to switch to a monthly plan. However, once the current month ends, transitioning from a monthly plan to an annual plan is an option."
-                    panelNum="2"
-                  />
-                  <BasicAccordion
-                    title="What's included in the Premium plan?"
-                    body="Premium membership provides you with the ultimate Summarist experience, including unrestricted entry to many best-selling books high-quality audio, the ability to download titles for offline reading, and the option to send your reads to your Kindle."
-                    panelNum="3"
-                  />
-                  <BasicAccordion
-                    title="Can I cancel during my trial or subscription?"
-                    body="You will not be charged if you cancel your trial before its conclusion. While you will not have complete access to the entire Summarist library, you can still expand your knowledge with one curated book per day."
-                    panelNum="4"
-                  />
+                <BasicAccordion
+                  title="How does the free 7-day trial work?"
+                  body="Begin your complimentary 7-day trial with a Summarist annual membership. You are under no obligation to continue your subscription, and you will only be billed when the trial period expires. With Premium access, you can learn at your own pace and as frequently as you desire, and you may terminate your subscription prior to the conclusion of the 7-day free trial."
+                  panelNum="1"
+                />
+                <BasicAccordion
+                  title="Can I switch subscriptions from monthly to yearly, or yearly to monthly?"
+                  body="While an annual plan is active, it is not feasible to switch to a monthly plan. However, once the current month ends, transitioning from a monthly plan to an annual plan is an option."
+                  panelNum="2"
+                />
+                <BasicAccordion
+                  title="What's included in the Premium plan?"
+                  body="Premium membership provides you with the ultimate Summarist experience, including unrestricted entry to many best-selling books high-quality audio, the ability to download titles for offline reading, and the option to send your reads to your Kindle."
+                  panelNum="3"
+                />
+                <BasicAccordion
+                  title="Can I cancel during my trial or subscription?"
+                  body="You will not be charged if you cancel your trial before its conclusion. While you will not have complete access to the entire Summarist library, you can still expand your knowledge with one curated book per day."
+                  panelNum="4"
+                />
               </div>
             </div>
           </div>

@@ -12,11 +12,17 @@ import {
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { auth, signInWithGoogle } from "@/firebase";
+import { auth, firestore, signInWithGoogle } from "@/firebase";
 import { onAuthStateChanged } from "firebase/auth";
+import { signUpWithEmail } from "@/firebase";
 import { setUser } from "@/redux/userSlice";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { doc, getFirestore, setDoc } from 'firebase/firestore';
+
+import firebase from "@/firebase";
+import 'firebase/firestore';
+import "firebase/auth";
 
 export default function SignupModal() {
   const [errorMessage, setErrorMessage] = useState("");
@@ -36,16 +42,26 @@ export default function SignupModal() {
   };
 
   async function handleSignUp() {
-    setLoading(true);
     try {
-      const userCredentials = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      router.reload();
-      router.push("/for-you");
-      dispatch(closeSignUpModal());
+      setLoading(true);
+      
+      const userCredentials = await signUpWithEmail(email, password);
+
+      // Add user to the 'users' collection
+      const userRef = doc(firestore, "users", userCredentials.user.uid);
+      await setDoc(userRef, {
+        uid: userCredentials.user.uid,
+        email: userCredentials.user.email,
+        name: userCredentials.user.email.split("@")[0],
+        provider: userCredentials.user.providerData[0].providerId,
+        photoUrl: userCredentials.user.photoURL,
+      });
+
+      console.log("User added to Firestore using Email:", userCredentials.user);
+
+      setTimeout(() => {
+        setLoading(false);
+      }, 500);
       dispatch(closeLoginModal());
     } catch (error) {
       setErrorMessage(error.message);
@@ -62,9 +78,11 @@ export default function SignupModal() {
         // function: Return information of user after they authenticate
         const name = result.user.displayName;
         const email = result.user.email;
-        console.log(result);
+        // console.log(result);
         setGoogleLoading(false);
-        router.push("/for-you");
+        if (router.pathname === "/") {
+          router.push("/for-you");
+        }
       });
       dispatch(closeLoginModal());
       dispatch(closeSignUpModal());
@@ -83,7 +101,7 @@ export default function SignupModal() {
 
       //  if user is signed in, then handle redux actions
 
-      console.log(currentUser);
+      // console.log(currentUser);
       dispatch(
         setUser({
           // pass in user object

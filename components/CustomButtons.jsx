@@ -6,13 +6,7 @@ import { LuBookOpenCheck } from "react-icons/lu";
 import { LuMic } from "react-icons/lu";
 import { useRouter } from "next/router";
 
-const CustomButtons = ({
-  buttonStyle,
-  logo,
-  customText,
-  id,
-  subRequired,
-}) => {
+const CustomButtons = ({ buttonStyle, logo, customText, id, subRequired }) => {
   const router = useRouter();
 
   function directUserToPlans() {
@@ -22,10 +16,7 @@ const CustomButtons = ({
     }
 
     // if status = "Basic", and subRequired == true, then route user to plans.
-    else if (
-      user.subscriptionStatus == "Basic" &&
-      subRequired == true
-    ) {
+    else if (user.subscriptionStatus == "Basic" && subRequired == true) {
       router.push("/choose-plan");
     }
 
@@ -35,7 +26,7 @@ const CustomButtons = ({
 
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
-  console.log("user email: " + user.email);
+  // console.log("user email: " + user.email);
 
   return (
     <div className="flex py-6">

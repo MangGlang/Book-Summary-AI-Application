@@ -15,7 +15,6 @@ const BasicAccordion = ({ title, body, panelNum }) => {
           expandIcon={<ExpandMoreIcon className="text-3xl text-black"/>}
           aria-controls={`panel${panelNum}a-content`}
           id={`panel${panelNum}a-header`}
-          disableGutters="true"
         >
           <Typography variant="" className="text-2xl text-[#032b41] font-semibold font-sans py-2 text-left">{title}</Typography>
         </AccordionSummary>

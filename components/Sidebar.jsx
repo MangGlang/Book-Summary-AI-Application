@@ -51,14 +51,14 @@ export default function Sidebar() {
     // dispatch(closeSignUpModal());
     // make sure to add sign out modal here in order to sign users out
     // dispatch(closeLoginModal());
-    console.log(user);
+    // console.log(user);
   }
   // states of sidebar elements
   const [expanded, setExpanded] = useState(true);
   const expandedStyling = `overflow-hidden truncate ease-in-out
   ${expanded ? "" : "hidden duration-0"}`;
 
-  console.log("user email: " + user.email);
+  // console.log("user email: " + user.email);
 
   return (
     <>

@@ -7,7 +7,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { closeLoginModal, openLoginModal } from "@/redux/modalSlice";
 import SignupModal from "@/components/modals/SignupModal";
 import ForgotPassModal from "@/components/modals/ForgotPassModal";
-import { auth } from "@/firebase";
 import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { useEffect, useState } from "react";
 
@@ -16,7 +15,17 @@ import Link from "next/link";
 import { setUser } from "@/redux/userSlice";
 import { useRouter } from "next/router";
 
-export default function LoginModal({buttonText}) {
+import { auth } from "@/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { createCheckoutSession } from "@/stripe/createCheckoutSession";
+import usePremiumStatus from "@/stripe/usePremiumStatus";
+
+import firebase from "@/firebase";
+import { doc, getFirestore, setDoc } from "firebase/firestore";
+import "firebase/firestore";
+import "firebase/auth";
+
+export default function LoginModal({ buttonText }) {
   const [errorMessage, setErrorMessage] = useState("");
   const [guestLoading, setGuestLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
@@ -45,12 +54,12 @@ export default function LoginModal({buttonText}) {
       );
       dispatch(closeLoginModal());
       if (router.pathname === "/") {
-        router.push("/for-you")
+        router.push("/for-you");
       }
     } catch (error) {
       alert(error.message);
     }
-    console.log("guest");
+    // console.log("guest");
     setTimeout(() => {
       setGuestLoading(false);
     }, 500);
@@ -59,9 +68,25 @@ export default function LoginModal({buttonText}) {
   async function handleSignIn() {
     try {
       setLoading(true);
-      await signInWithEmailAndPassword(auth, email, password);
-      // minhleenl@gmail.com
-      console.log(email);
+
+      const userCredentials = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      // Add user to the 'users' collection
+      const userRef = doc(firestore, "users", userCredentials.user.uid);
+      await setDoc(userRef, {
+        uid: userCredentials.user.uid,
+        email: userCredentials.user.email,
+        name: userCredentials.user.displayName,
+        provider: userCredentials.user.providerData[0].providerId,
+        photoUrl: userCredentials.user.photoURL,
+      });
+
+      console.log("User added to Firestore using Email:", userCredentials.user);
+
       setTimeout(() => {
         setLoading(false);
       }, 500);
@@ -81,12 +106,11 @@ export default function LoginModal({buttonText}) {
         // function: Return information of user after they authenticate
         const name = result.user.displayName;
         const email = result.user.email;
-        console.log(result);
         setGoogleLoading(false);
-        // set up if user is authenticated, then push. otherwise, dont push user to new page if not authent.
         if (router.pathname === "/") {
-          router.push("/for-you")
+          router.push("/for-you");
         }
+        return signInWithPopup(auth, provider);
       });
       dispatch(closeLoginModal());
     } catch (error) {
@@ -102,9 +126,9 @@ export default function LoginModal({buttonText}) {
 
       //  if user is signed in, then handle redux actions
       if (router.pathname === "/") {
-        router.push("/for-you")
+        router.push("/for-you");
       }
-      console.log(currentUser);
+      // console.log(currentUser);
       dispatch(
         setUser({
           // pass in user object
@@ -121,7 +145,7 @@ export default function LoginModal({buttonText}) {
   }, []);
 
   return (
-    <>
+    <div>
       <button
         onClick={() => dispatch(openLoginModal())}
         className="btn home__cta--btn"
@@ -209,8 +233,8 @@ export default function LoginModal({buttonText}) {
                 )}
               </button>
             </div>
-          <ForgotPassModal />
-          <SignupModal />
+            <ForgotPassModal />
+            <SignupModal />
           </div>
 
           {/* Forgot Password/No Account */}
@@ -224,6 +248,6 @@ export default function LoginModal({buttonText}) {
           />
         </div>
       </Modal>
-    </>
+    </div>
   );
 }

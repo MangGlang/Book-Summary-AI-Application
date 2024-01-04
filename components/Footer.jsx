@@ -74,7 +74,7 @@ export default function Footer() {
               </div>
             </div>
             <div className="footer__copyright--wrapper">
-              <div className="footer__copyright">
+              <div className="footer__copyright font-bold">
                 Copyright &copy; 2023 Summarist.
               </div>
             </div>

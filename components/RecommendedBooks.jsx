@@ -27,8 +27,8 @@ const RecommendedBooks = () => {
       </p>
       <div className="book__container flex overflow-scroll snap-x">
         {recommendedBooks &&
-          recommendedBooks.map((books) => (
-            <div className="flex flex-col snap-start relative">
+          recommendedBooks.map((books, index) => (
+            <div className="flex flex-col snap-start relative" key={index}>
               {books.subscriptionRequired ? (
                 <div className="flex absolute top-0 right-0 bg-[#032b41] text-white font-sans rounded-full px-2 text-sm font-semibold">
                   Premium
