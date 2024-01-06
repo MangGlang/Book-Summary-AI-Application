@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import firebase from "firebase/compat/app";
+import firebase from "@/firebase"
 import isUserPremium from "./isUserPremium";
 
 export default function usePremiumStatus(user: firebase.User) {

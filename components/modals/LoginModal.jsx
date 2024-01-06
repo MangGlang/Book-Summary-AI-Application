@@ -110,7 +110,6 @@ export default function LoginModal({ buttonText }) {
         if (router.pathname === "/") {
           router.push("/for-you");
         }
-        return signInWithPopup(auth, provider);
       });
       dispatch(closeLoginModal());
     } catch (error) {

@@ -5,7 +5,7 @@
 // import { DocumentSnapshot } from "firebase/firestore";
 // import getStripe from "./initializeStripe";
 // import initializeStripe from "./initializeStripe";
-import "@/firebase"
+import firebase from "@/firebase"
 import getStripe from "./initializeStripe";
 
 
@@ -36,7 +36,7 @@ export async function createCheckoutSession(uid: string) {
         if (sessionId) {
           // We have a session, let's redirect to checkout
           // Init stripe
-          const stripe = await initializeStripe();
+          const stripe = await getStripe();
           if (stripe) {
             stripe.redirectToCheckout({ sessionId });
           }

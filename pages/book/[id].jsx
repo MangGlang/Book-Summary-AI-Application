@@ -17,7 +17,7 @@ import { BsBookmark } from "react-icons/bs";
 import { BsBookmarkCheckFill } from "react-icons/bs";
 // import UserLoginModal from "../../components/wrapper/UserLoginModal";
 
-import CustomButtons from "../../components/CustomButtons";F
+import CustomButtons from "../../components/CustomButtons";
 
 const Book = () => {
   const [bookData, setBookData] = useState(null);
