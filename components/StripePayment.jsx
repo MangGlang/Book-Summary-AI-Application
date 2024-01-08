@@ -35,7 +35,7 @@ const StripePayment = () => {
     // invoke hook above if any of these values change; checks if user is currently premium
   }, [app, auth.currentUser?.uid]);
 
-  
+  // set up premiumPlus button upgrade to direct user to stripe payment
       //   const upgradeToPremiumPlus = async () => {
       //     const priceId = "price_1OVHsLF25pFdlPQkt1PUxBwP";
       //     const checkoutUrl = await getCheckoutUrl(app, priceId);
