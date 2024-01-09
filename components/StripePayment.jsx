@@ -20,6 +20,7 @@ const StripePayment = () => {
   const email = auth.currentUser?.email;
   const router = useRouter();
   const [isPremium, setIsPremium] = useState(false);
+  const [isPremiumPlus, setIsPremiumPlus] = useState(false);
 
   //   async function must be called in a hook
   useEffect(() => {
@@ -32,30 +33,43 @@ const StripePayment = () => {
     };
     checkPremium();
 
+    const checkPremiumPlus = async () => {
+      const newPremiumStatus = auth.currentUser
+        ? await getPremiumStatus(app)
+        : false;
+        setIsPremiumPlus(newPremiumStatus);
+    };
+    checkPremiumPlus();
+
     // invoke hook above if any of these values change; checks if user is currently premium
   }, [app, auth.currentUser?.uid]);
 
-  // set up premiumPlus button upgrade to direct user to stripe payment
-      //   const upgradeToPremiumPlus = async () => {
-      //     const priceId = "price_1OVHsLF25pFdlPQkt1PUxBwP";
-      //     const checkoutUrl = await getCheckoutUrl(app, priceId);
-      //     router.push(checkoutUrl);
-      //     console.log("Upgrade to Premium");
-      //   };
-      
-      const upgradeToPremium = async () => {
-        const priceId = "price_1OVHsLF25pFdlPQkt1PUxBwP";
-        const checkoutUrl = await getCheckoutUrl(app, priceId);
-        router.push(checkoutUrl);
-        console.log("Upgrade to Premium");
-      };
-      
+  // Premium Button Upgrade
+  const upgradeToPremium = async () => {
+    const priceId = "price_1OVHsLF25pFdlPQkt1PUxBwP";
+    const checkoutUrl = await getCheckoutUrl(app, priceId);
+    router.push(checkoutUrl);
+    console.log("Upgrade to Premium");
+  };
+  // PremiumPlus Button Upgrade
+  const upgradeToPremiumPlus = async () => {
+    const priceId = "price_1OVHWAF25pFdlPQkTUnxMthk";
+    const checkoutUrl = await getCheckoutUrl(app, priceId);
+    router.push(checkoutUrl);
+    console.log("Upgrade to Premium+");
+  };
+
   return (
     <div>
       {isPremium ? (
         <h1>Here's a 🍪 for being subscribed to us.</h1>
       ) : (
         <button onClick={upgradeToPremium}>Upgrade to Premium</button>
+      )}
+      {isPremiumPlus ? (
+        <h1>Here's a 🍪 for being subscribed to us.</h1>
+      ) : (
+        <button onClick={upgradeToPremiumPlus}>Upgrade to Premium+</button>
       )}
     </div>
   );

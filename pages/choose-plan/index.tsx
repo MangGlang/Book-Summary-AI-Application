@@ -59,13 +59,13 @@ export default function forYou() {
 
                 <Plans
                   subPlan="Premium Plus Yearly"
-                  costOfPlan="$12.99/year"
+                  costOfPlan="$99.99/year"
                   trial="7-day free trial included"
                 />
 
                 <Plans
                   subPlan={"Premium Monthly"}
-                  costOfPlan="$1.99/month"
+                  costOfPlan="$10.00/month"
                   trial="No trial included"
                 />
                 <div className="flex flex-col items-center justify-center sticky bottom-0 bg-white p-4 w-[100%]">
