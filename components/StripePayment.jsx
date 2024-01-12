@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import { getCheckoutUrl } from "@/stripe/StripePayment";
 import { getPremiumStatus } from "@/stripe/getPremiumStatus";
 
+// need to get current users action; based on index.tsx file of "choose-plan"
 const StripePayment = () => {
   const app = initFirebase();
   const auth = getAuth(app);
@@ -44,6 +45,10 @@ const StripePayment = () => {
     // invoke hook above if any of these values change; checks if user is currently premium
   }, [app, auth.currentUser?.uid]);
 
+  // TODO: Update subscription plan in "settings" tab once user purchases a new plan.
+  // access "firebaseKey" from under stripe invoices metadata and update sub plan.
+
+
   // Premium Button Upgrade
   const upgradeToPremium = async () => {
     const priceId = "price_1OVHsLF25pFdlPQkt1PUxBwP";
@@ -68,9 +73,9 @@ const StripePayment = () => {
       )}
 
       {isPremiumPlus ? (
-        <h1>Here's a 🍪 for being subscribed to us with Premium.</h1>
+        <h1>Here's a 🍪 for being subscribed to us with Premium+.</h1>
       ) : (
-        <button onClick={upgradeToPremiumPlus}>Upgrade to Premium+</button>
+        null
       )}
     </div>
   );
