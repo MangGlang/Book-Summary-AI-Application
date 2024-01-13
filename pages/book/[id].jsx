@@ -168,10 +168,10 @@ const Book = () => {
 
                     <div className="flex mt-4">
                       {bookTagsArray.map((tags, index) => (
-                        <div className="flex items-center mb-4">
+                        <div className="flex items-center mb-4" key={index}>
                           <button
                             className="flex mr-4 justify-center font-sm p-3 w-[100%] rounded bg-[#f1f6f4] text-[#032841] hover:cursor-not-allowed text-sm font-bold whitespace-nowrap"
-                            key={index}
+                            
                           >
                             {tags}
                           </button>
