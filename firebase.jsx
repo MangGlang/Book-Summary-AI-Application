@@ -86,3 +86,5 @@ export async function signUpWithEmail(email, password) {
     throw error;
   }
 }
+
+// Updated Changes
