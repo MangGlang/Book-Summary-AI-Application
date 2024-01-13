@@ -73,7 +73,7 @@ const StripePayment = () => {
       )}
 
       {isPremiumPlus ? (
-        <h1>Here's a 🍪 for being subscribed to us with Premium+.</h1>
+        <h1>Here's two 🍪🍪's for being subscribed to us with Premium+.</h1>
       ) : (
         null
       )}
