@@ -67,13 +67,13 @@ const StripePayment = () => {
   return (
     <div>
       {isPremium ? (
-        <h1>Here's a 🍪 for being subscribed to us.</h1>
+        <h1>Here&apos;s a 🍪 for being subscribed to us.</h1>
       ) : (
         <button onClick={upgradeToPremium}>Upgrade to Premium</button>
       )}
 
       {isPremiumPlus ? (
-        <h1>Here's two 🍪🍪's for being subscribed to us with Premium+.</h1>
+        <h1>Here&apos;s two 🍪🍪&apos;s for being subscribed to us with Premium+.</h1>
       ) : (
         null
       )}
