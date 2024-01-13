@@ -123,7 +123,7 @@ export default function SignupModal() {
         onClick={() => dispatch(openSignUpModal())}
         className="auth__account--creation"
       >
-        Don't have an account?
+        Don&apos;t have an account?
       </div>
 
       {/* Modal: 2 props, "open={useState to handle open}", "onClose={funct to handle close}" */}

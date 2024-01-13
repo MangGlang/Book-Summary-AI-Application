@@ -10,16 +10,15 @@ import { useState } from "react";
 // Stripe setup
 import firebase from "firebase/app";
 import "firebase/firestore";
-import { auth } from "@/firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { createCheckoutSession } from "@/stripe/createCheckoutSession";
-import usePremiumStatus from "@/stripe/usePremiumStatus";
+// import { auth } from "@/firebase";
+// import { useAuthState } from "react-firebase-hooks/auth";
+// import { createCheckoutSession } from "@/stripe/createCheckoutSession";
+// import usePremiumStatus from "@/stripe/usePremiumStatus";
 
-import { FaRegCircle, FaRegDotCircle } from "react-icons/fa";
 
 export default function forYou() {
-  const [user, userLoading] = useAuthState(auth);
-  const userIsPremium = usePremiumStatus(user);
+  // const [user, userLoading] = useAuthState(auth);
+  // const userIsPremium = usePremiumStatus(user);
 
   return (
     <section id="choose-plan">

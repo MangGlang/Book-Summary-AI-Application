@@ -23,7 +23,7 @@ const RecommendedBooks = () => {
     <>
       <div className="for-you__tile">Recommended For You</div>
       <p className="font-thin text-[#394547] text-[17px] font-sans">
-        We think you'll like these
+        We think you&apos;ll like these
       </p>
       <div className="book__container flex overflow-scroll snap-x">
         {recommendedBooks &&

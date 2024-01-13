@@ -56,7 +56,7 @@ const Book = () => {
 
   useEffect(() => {
     getBookData();
-  }, [id]);
+  }, [id, data]);
 
   return (
     <section id="book">
@@ -163,7 +163,7 @@ const Book = () => {
                       )}
                     </button>
                     <div className="font-bold font-sans text-lg text-[#032b41] mt-8">
-                      What's it about?
+                      What&apos;s it about?
                     </div>
 
                     <div className="flex mt-4">

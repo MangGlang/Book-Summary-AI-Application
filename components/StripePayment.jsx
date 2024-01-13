@@ -43,7 +43,7 @@ const StripePayment = () => {
     checkPremiumPlus();
 
     // invoke hook above if any of these values change; checks if user is currently premium
-  }, [app, auth.currentUser?.uid]);
+  }, [app, auth.currentUser?.uid, auth.currrentUser]);
 
   // TODO: Update subscription plan in "settings" tab once user purchases a new plan.
   // access "firebaseKey" from under stripe invoices metadata and update sub plan.
