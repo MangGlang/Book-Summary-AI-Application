@@ -17,10 +17,7 @@ import { useRouter } from "next/router";
 
 import { auth } from "@/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { createCheckoutSession } from "@/stripe/createCheckoutSession";
-import usePremiumStatus from "@/stripe/usePremiumStatus";
 
-import firebase from "@/firebase";
 import { doc, getFirestore, setDoc } from "firebase/firestore";
 import "firebase/firestore";
 import "firebase/auth";

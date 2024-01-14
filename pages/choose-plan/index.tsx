@@ -12,7 +12,6 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 // import { auth } from "@/firebase";
 // import { useAuthState } from "react-firebase-hooks/auth";
-// import { createCheckoutSession } from "@/stripe/createCheckoutSession";
 // import usePremiumStatus from "@/stripe/usePremiumStatus";
 
 

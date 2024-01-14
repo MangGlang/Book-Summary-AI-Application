@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from "react";
 import firebase, { initFirebase } from "@/firebase";
 const auth = firebase;
-import { useAuthState } from "react-firebase-hooks/auth";
-import { createCheckoutSession } from "../stripe/createCheckoutSession";
-import usePremiumStatus from "../stripe/usePremiumStatus";
 import { getAuth } from "firebase/auth";
-
-import LoginModal from "./modals/LoginModal";
 // import { useRouter } from "next/router";
 import { useRouter } from "next/navigation";
 import { getCheckoutUrl } from "@/stripe/StripePayment";
@@ -38,7 +33,7 @@ const StripePayment = () => {
       const newPremiumStatus = auth.currentUser
         ? await getPremiumStatus(app)
         : false;
-        setIsPremiumPlus(newPremiumStatus);
+      setIsPremiumPlus(newPremiumStatus);
     };
     checkPremiumPlus();
 
@@ -47,7 +42,6 @@ const StripePayment = () => {
 
   // TODO: Update subscription plan in "settings" tab once user purchases a new plan.
   // access "firebaseKey" from under stripe invoices metadata and update sub plan.
-
 
   // Premium Button Upgrade
   const upgradeToPremium = async () => {
@@ -73,10 +67,10 @@ const StripePayment = () => {
       )}
 
       {isPremiumPlus ? (
-        <h1>Here&apos;s two 🍪🍪&apos;s for being subscribed to us with Premium+.</h1>
-      ) : (
-        null
-      )}
+        <h1>
+          Here&apos;s two 🍪🍪&apos;s for being subscribed to us with Premium+.
+        </h1>
+      ) : null}
     </div>
   );
 };
