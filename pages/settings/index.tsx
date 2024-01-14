@@ -5,10 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import LoginModal from "@/components/modals/LoginModal";
 
+
 export default function Settings() {
   const dispatch = useDispatch();
   const router = useRouter();
-  const user = useSelector((state) => state.user);
+  
+  const user = useSelector((state: any) => state.user);
 
   function routeUserToPlans() {
     router.push("/choose-plan");
