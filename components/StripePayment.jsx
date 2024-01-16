@@ -61,13 +61,22 @@ const StripePayment = () => {
 
   return (
     <div>
+      {/* if premiumPlus false, display upgrade. */}
+      {/* if premium false, display upgrade. */}
+      {isPremiumPlus ? (
+        <h1>Here&apos;s a 🍪 for being premium+.</h1>
+      ) : isPremium ? (
+        <h1>Here&apos;s a 🍪 for being subscribed to us.</h1>
+      ) : <button onClick={upgradeToPremium}>Upgrade to Premium</button>
+      }
+
       {isPremium ? (
         <h1>Here&apos;s a 🍪 for being subscribed to us.</h1>
       ) : (
         <button onClick={upgradeToPremium}>Upgrade to Premium</button>
       )}
 
-        <button onClick={upgradeToPremiumPlus}>Upgrade to Premium+</button>
+      {/* <button onClick={upgradeToPremiumPlus}>Upgrade to Premium+</button> */}
 
       {/* {isPremiumPlus ? (
         <h1>
