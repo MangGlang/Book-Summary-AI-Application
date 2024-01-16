@@ -66,6 +66,8 @@ const StripePayment = () => {
         <button onClick={upgradeToPremium}>Upgrade to Premium</button>
       )}
 
+        <button onClick={upgradeToPremiumPlus}>Upgrade to Premium+</button>
+
       {isPremiumPlus ? (
         <h1>
           Here&apos;s two 🍪🍪&apos;s for being subscribed to us with Premium+.
