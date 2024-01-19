@@ -134,7 +134,6 @@ const Book = () => {
                           subRequired={bookData.subscriptionRequired}
                         />
                       )}
-
                       <CustomButtons
                         buttonStyle="ml-4 flex items-center justify-center p-3 w-[150px] rounded bg-[#032841] text-white hover:opacity-80 transition-all duration-300 ease-in-out"
                         logo={<LuMic className="text-2xl" />}
