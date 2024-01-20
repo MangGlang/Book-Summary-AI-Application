@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   email: null,
   username: null,
-  subscriptionStatus: null,
+  subscriptionStatus: "Basic",
 };
 
 const userSlice = createSlice({
@@ -14,22 +14,24 @@ const userSlice = createSlice({
     // actions: 2 arguments bc changing "null-state values" with "action values"
     setUser: (state, action) => {
       // payload = argument passed in; which is an object with the initialState properties above
-      state.email = action.payload.email,
-      state.username = action.payload.username,
-      state.subscriptionStatus = action.payload.subscriptionStatus
+      (state.email = action.payload.email),
+        (state.username = action.payload.username),
+        (state.subscriptionStatus = action.payload.subscriptionStatus);
     },
 
     signOutUser: (state) => {
-        state.email = null,
-        state.username = null,
-        state.subscriptionStatus = null
-    }
+      (state.email = null),
+        (state.username = null),
+        (state.subscriptionStatus = null);
+    },
+
+    setSubscriptionStatus: (state, action) => {
+      state.subscriptionStatus = action.payload;
+    },
   },
 });
 
-export const {
-    setUser,
-    signOutUser
-} = userSlice.actions;
+export const { setUser, signOutUser, setSubscriptionStatus } =
+  userSlice.actions;
 
 export default userSlice.reducer;

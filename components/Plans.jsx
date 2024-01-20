@@ -1,18 +1,31 @@
-import React, { useState } from "react";
 import { FaRegCircle, FaRegDotCircle } from "react-icons/fa";
+import React, { useEffect, useState } from "react";
+import firebase, { initFirebase } from "@/firebase";
+const auth = firebase;
+import { getAuth } from "firebase/auth";
+// import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
+import { getCheckoutUrl } from "@/stripe/StripePayment";
+import { getPremiumStatus } from "@/stripe/getPremiumStatus";
 
-const Plans = ({ subPlan, costOfPlan, trial }) => {
-  const [isActive, setIsActive] = useState(false);
+const Plans = ({
+  subPlan,
+  costOfPlan,
+  trial,
+  handleButtonBlur,
+  handleButtonClick,
+  isActive,
+}) => {
+  const app = initFirebase();
+  const auth = getAuth(app);
+  const router = useRouter();
 
-  const handleButtonClick = () => {
-    setIsActive(true);
-    // use useState to set respective button of plan
-  };
-
-  const handleButtonBlur = () => {
-    setIsActive(false);
-    // use useState to set respective button of plan
-  };
+  // const upgradeToPremium = async () => {
+  //   const priceId = "price_1OVHsLF25pFdlPQkt1PUxBwP";
+  //   const checkoutUrl = await getCheckoutUrl(app, priceId);
+  //   router.push(checkoutUrl);
+  //   console.log("Upgrade to Premium!");
+  // };
 
   return (
     <div className="auth__main--form max-w-[668px]">

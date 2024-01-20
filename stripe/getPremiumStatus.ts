@@ -7,6 +7,10 @@ import {
   query,
   where,
 } from "firebase/firestore";
+// import { useEffect, useState } from "react";
+// import isUserPremium from "./isUserPremium";
+
+// const [premiumStatus, setPremiumStatus] = useState<boolean>(false);
 
 // pass in an instance of the app, and retrieve user info from that instance
 export const getPremiumStatus = async (app: FirebaseApp) => {
@@ -21,6 +25,16 @@ export const getPremiumStatus = async (app: FirebaseApp) => {
     subscriptionsRef,
     where("status", "in", ["trialing", "active"])
   );
+
+  // useEffect(() => {
+  //   if (auth.currentUser) {
+  //     const checkPremiumStatus = async function () {
+  //       setPremiumStatus(await isUserPremium());
+  //     }
+  //     checkPremiumStatus();
+  //   }
+  // }, [auth.currentUser]
+  // )
 
 // waits for response to see if user is current trialing or active; once found, prompts whether user has either.
   return new Promise<boolean>((resolve, reject) => {

@@ -7,17 +7,59 @@ import BasicAccordion from "@/components/BasicAccordion";
 import StripePayment from "@/components/StripePayment";
 import { useState } from "react";
 
+import { FaRegCircle, FaRegDotCircle } from "react-icons/fa";
+const auth = firebase;
+import { getAuth } from "firebase/auth";
+// import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
+import { getCheckoutUrl } from "@/stripe/StripePayment";
+import { getPremiumStatus } from "@/stripe/getPremiumStatus";
+
 // Stripe setup
 import firebase from "firebase/app";
+import { initFirebase } from "@/firebase";
 import "firebase/firestore";
+import { useDispatch, useSelector } from "react-redux";
+import { setSubscriptionStatus } from "@/redux/userSlice";
 // import { auth } from "@/firebase";
 // import { useAuthState } from "react-firebase-hooks/auth";
 // import usePremiumStatus from "@/stripe/usePremiumStatus";
 
-
 export default function forYou() {
   // const [user, userLoading] = useAuthState(auth);
   // const userIsPremium = usePremiumStatus(user);
+  const [activePremiumPlus, setActivePremiumPlus] = useState(false);
+  const [activePremium, setActivePremium] = useState(false);
+
+  const app = initFirebase();
+  const auth = getAuth(app);
+  const router = useRouter();
+  const dispatch = useDispatch();
+  
+
+  const premiumPlus = async () => {
+    setActivePremiumPlus(true);
+    const priceId = "price_1OVHWAF25pFdlPQkTUnxMthk";
+    const checkoutUrl = await getCheckoutUrl(app, priceId);
+    router.push(checkoutUrl);
+  };
+  
+    const premium = async () => {
+      setActivePremium(true);
+      const priceId = "price_1OVHsLF25pFdlPQkt1PUxBwP";
+      const checkoutUrl = await getCheckoutUrl(app, priceId);
+      router.push(checkoutUrl);
+    };
+
+  const premiumPlusBlur = () => {
+    setActivePremiumPlus(false);
+  };
+
+
+
+  const premiumBlur = () => {
+    setActivePremium(false);
+  };
 
   return (
     <section id="choose-plan">
@@ -59,15 +101,25 @@ export default function forYou() {
                   subPlan="Premium Plus Yearly"
                   costOfPlan="$99.99/year"
                   trial="7-day free trial included"
+                  handleButtonClick={premiumPlus}
+                  handleButtonBlur={premiumPlusBlur}
+                  isActive={activePremiumPlus}
                 />
 
                 <Plans
                   subPlan={"Premium Monthly"}
                   costOfPlan="$10.00/month"
                   trial="No trial included"
+                  handleButtonClick={premium}
+                  handleButtonBlur={premiumBlur}
+                  isActive={activePremium}
                 />
+
                 <div className="flex flex-col items-center justify-center sticky bottom-0 bg-white p-4 w-[100%]">
-                  <StripePayment />
+                  <StripePayment
+                    planPremium={activePremium}
+                    planPremiumPlus={activePremiumPlus}
+                  />
                   <p className="text-gray-400 text-xs text-nowrap my-4">
                     Cancel your trial at any time before it ends, and you won’t
                     be charged.

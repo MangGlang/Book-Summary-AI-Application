@@ -6,9 +6,12 @@ import { getAuth } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { getCheckoutUrl } from "@/stripe/StripePayment";
 import { getPremiumStatus } from "@/stripe/getPremiumStatus";
+import LoginModal from "./modals/LoginModal";
+
+import isUserPremium from "@/stripe/isUserPremium";
 
 // need to get current users action; based on index.tsx file of "choose-plan"
-const StripePayment = () => {
+const StripePayment = ({ planPremium, planPremiumPlus }) => {
   const app = initFirebase();
   const auth = getAuth(app);
 
@@ -37,6 +40,7 @@ const StripePayment = () => {
     };
     checkPremiumPlus();
 
+    console.log("current user auth: " + auth.currentUser);
     // invoke hook above if any of these values change; checks if user is currently premium
   }, [app, auth.currentUser?.uid, auth.currrentUser]);
 
@@ -46,29 +50,37 @@ const StripePayment = () => {
   // Premium Button Upgrade
   const upgradeToPremium = async () => {
     const priceId = "price_1OVHsLF25pFdlPQkt1PUxBwP";
+    setUpgradeOption("Premium");
     const checkoutUrl = await getCheckoutUrl(app, priceId);
     router.push(checkoutUrl);
     console.log("Upgrade to Premium!");
-    console.log("Upgrade to Now!");
   };
   // PremiumPlus Button Upgrade
   const upgradeToPremiumPlus = async () => {
     const priceId = "price_1OVHWAF25pFdlPQkTUnxMthk";
+    setUpgradeOption("Premium+");
     const checkoutUrl = await getCheckoutUrl(app, priceId);
     router.push(checkoutUrl);
     console.log("Upgrade to Premium+");
   };
 
+  const [upgradeOption, setUpgradeOption] = useState(null);
+
   return (
     <div>
-      {/* if premiumPlus false, display upgrade. */}
-      {/* if premium false, display upgrade. */}
-      {isPremiumPlus ? (
-        <h1>Here&apos;s a 🍪 for being premium+.</h1>
-      ) : isPremium ? (
-        <h1>Here&apos;s a 🍪 for being subscribed to us.</h1>
-      ) : <button onClick={upgradeToPremium}>Upgrade to Premium</button>
-      }
+      <>
+        {/* {!planPremium || !planPremiumPlus ? <button>Upgrade</button> : null} */}
+
+        {/* {upgradeOption ? "hello" : null} */}
+
+        {planPremium ? (
+            <LoginModal buttonText={"Upgrading to Premium"}></LoginModal>
+        ) : null}
+
+        {planPremiumPlus ? (
+          <LoginModal buttonText={"Upgrading to Premium+"}></LoginModal>
+        ) : null}
+      </>
 
       {/* {isPremium ? (
         <h1>Here&apos;s a 🍪 for being subscribed to us.</h1>
