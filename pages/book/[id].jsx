@@ -62,7 +62,6 @@ const Book = () => {
     <section id="book">
       <div className="relative flex">
         <Sidebar />
-
         <div className="flex-grow ">
           <Search />
           <div className="flex">
