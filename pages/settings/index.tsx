@@ -81,7 +81,7 @@ export default function Settings() {
                     />
                   </figure>
                   <div className="text-2xl font-bold max-w-[100%] text-[#032b41] mb-4">
-                    Log in to see your details.
+                    Log in to see your details...
                   </div>
                   <button>
                     <LoginModal buttonText={`Login`} />
