@@ -23,7 +23,7 @@ const Player = () => {
 
   useEffect(() => {
     getBookData();
-  }, [id]);
+  }, [id, bookData]);
 
   return (
     <section id="player">

@@ -25,7 +25,7 @@ import { setSubscriptionStatus } from "@/redux/userSlice";
 // import { useAuthState } from "react-firebase-hooks/auth";
 // import usePremiumStatus from "@/stripe/usePremiumStatus";
 
-export default function forYou() {
+export default function ForYou() {
   // const [user, userLoading] = useAuthState(auth);
   // const userIsPremium = usePremiumStatus(user);
   const [activePremiumPlus, setActivePremiumPlus] = useState(false);

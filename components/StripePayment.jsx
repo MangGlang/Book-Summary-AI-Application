@@ -8,7 +8,7 @@ import { getCheckoutUrl } from "@/stripe/StripePayment";
 import { getPremiumStatus } from "@/stripe/getPremiumStatus";
 import LoginModal from "./modals/LoginModal";
 
-import isUserPremium from "@/stripe/isUserPremium";
+// import isUserPremium from "@/stripe/isUserPremium";
 
 // need to get current users action; based on index.tsx file of "choose-plan"
 const StripePayment = ({ planPremium, planPremiumPlus }) => {

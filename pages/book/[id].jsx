@@ -56,7 +56,7 @@ const Book = () => {
 
   useEffect(() => {
     getBookData();
-  }, [id]);
+  }, [id, bookData]);
 
   return (
     <section id="book">

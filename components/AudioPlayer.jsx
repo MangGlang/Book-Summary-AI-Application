@@ -71,7 +71,7 @@ const AudioPlayer = ({ audioSrc }) => {
       isMounted = false;
       audioRef.current.removeEventListener("timeupdate", handleTimeUpdate);
     };
-  }, [audioRef]);
+  });
 
   return (
     <>
