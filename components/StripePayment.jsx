@@ -53,7 +53,7 @@ const StripePayment = ({ planPremium, planPremiumPlus }) => {
     setUpgradeOption("Premium");
     const checkoutUrl = await getCheckoutUrl(app, priceId);
     router.push(checkoutUrl);
-    console.log("Upgrade to Premium!");
+    console.log("Upgrade to Premium!!");
   };
 
   // PremiumPlus Button Upgrade
