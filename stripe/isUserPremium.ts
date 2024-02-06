@@ -10,3 +10,5 @@
 
 // hey there comment check
 // 
+// what if this function doesn't work? 
+// refer to firebase documentation
