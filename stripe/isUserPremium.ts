@@ -11,3 +11,4 @@
 // what if this function doesn't work? 
 // refer to firebase documentation
 // 
+// documented function with import firebase and custom rules
