@@ -5,10 +5,5 @@
 //     const decodedToken = await firebase.auth().currentUser?.getIdTokenResult();
 
 //     return decodedToken?.claims?.stripeRole ? true : false;
-// }
 
-
-// what if this function doesn't work? 
-// refer to firebase documentation
 // 
-// documented function with import firebase and custom rules
