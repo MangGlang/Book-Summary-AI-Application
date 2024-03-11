@@ -13,7 +13,6 @@ const AudioPlayer = ({ audioSrc, bookData }) => {
   const [duration, setDuration] = useState(0);
 
   const audioRef = useRef(null);
-
   let isMounted = true;
 
   const handleForwards = () => {
@@ -79,7 +78,6 @@ const AudioPlayer = ({ audioSrc, bookData }) => {
     // Clean up the event listener when the component unmounts
     return () => {
       isMounted = false;
-      audioRef.current.removeEventListener("timeupdate", handleTimeUpdate);
     };
   });
 
