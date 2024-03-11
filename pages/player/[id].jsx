@@ -53,21 +53,9 @@ const Player = () => {
       {/* TODO: Implement audio player below sidebar and summary; "Logout feature is currently shown on overscroll" */}
       {bookData && (
         <div className="bg-[#042330] h-[80px] sticky w-full bottom-0 flex items-center justify-center px-10">
-          <div className="flex  w-[33%]">
-            <figure className="max-w-48">
-              <img src={bookData.imageLink} width={48} height={48} alt="" />
-            </figure>
-            <div className="flex-row pl-3">
-              <div className="text-white font-sans text-sm font-semibold">
-                {bookData.title}
-              </div>
-              <div className="text-[#bac8ce] text-sm font-sans font-semibold">
-                {bookData.author}
-              </div>
-            </div>
-          </div>
-          <div className="flex w-[66%] mx-auto items-center justify-center">
-            <AudioPlayer audioSrc={bookData.audioLink} />
+          
+          <div className="flex w-[100%]">
+            <AudioPlayer audioSrc={bookData.audioLink} bookData={bookData} />
           </div>
         </div>
       )}

@@ -6,7 +6,7 @@ import { FaChevronRight } from "react-icons/fa";
 import { FaPlayCircle } from "react-icons/fa";
 import { FaPauseCircle } from "react-icons/fa";
 
-const AudioPlayer = ({ audioSrc }) => {
+const AudioPlayer = ({ audioSrc, bookData }) => {
   // Manage player's status and current time
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -15,6 +15,15 @@ const AudioPlayer = ({ audioSrc }) => {
   const audioRef = useRef(null);
 
   let isMounted = true;
+
+  const handleForwards = () => {
+    // Forward --> +10 seconds
+    audioRef.current.currentTime += 10;
+  };
+  const handleBackwards = () => {
+    // Backwards --> -10 seconds
+    audioRef.current.currentTime -= 10;
+  };
 
   //   Function to seek to a specific time in the audio.
   const handleSeek = (e) => {
@@ -79,9 +88,32 @@ const AudioPlayer = ({ audioSrc }) => {
     "text-white mx-6 text-5xl hover:scale-110 duration-300 ease-in-out";
 
   return (
-    <>
-      <div className="w-[33%] flex mx-auto items-center  justify-center">
-        <button className="flex text-2xl text-white hover:scale-110 duration-300 ease-in-out">
+    <div className="flex mx-auto items-center w-[100%]">
+      <div className="flex w-[33%]">
+        <figure>
+          {/* TODO: for breakpoint 768, add padding space to bottom of page to revamp audio-player spacing*/}
+          <img
+            className="max-w-none"
+            src={bookData.imageLink}
+            width={48}
+            height={48}
+            alt=""
+          />
+        </figure>
+        <div className="flex-row pl-3">
+          <div className="text-white font-sans text-sm font-semibold">
+            {bookData.title}
+          </div>
+          <div className="text-[#bac8ce] text-sm font-sans font-semibold">
+            {bookData.author}
+          </div>
+        </div>
+      </div>
+      <div className="flex mx-auto items-center justify-center w-[33%]">
+        <button
+          onClick={handleBackwards}
+          className="flex text-2xl text-white hover:scale-110 duration-300 ease-in-out"
+        >
           <FaChevronLeft />
           <MdTimer10 />
         </button>
@@ -96,7 +128,10 @@ const AudioPlayer = ({ audioSrc }) => {
           </span>
         </button>
 
-        <button className="flex text-2xl text-white hover:scale-110 duration-300 ease-in-out">
+        <button
+          onClick={handleForwards}
+          className="flex text-2xl text-white hover:scale-110 duration-300 ease-in-out"
+        >
           <MdTimer10 />
           <FaChevronRight />
         </button>
@@ -105,10 +140,10 @@ const AudioPlayer = ({ audioSrc }) => {
       {/* Input range  for seeking within the audio track. */}
 
       {/* Audio Player */}
-      <div className="flex mx-auto items-center">
-          <p className="text-2xl text-white text-left">
-            {formatDuration(currentTime)}
-          </p>
+      <div className="flex items-center w-[33%]">
+        <p className="text-sm text-white text-left mx-4">
+          {formatDuration(currentTime)}
+        </p>
         <input
           type="range"
           min="0"
@@ -118,20 +153,17 @@ const AudioPlayer = ({ audioSrc }) => {
         />
 
         {/* Display current & total duration of the track. */}
-        <div className="flex mx-auto items-center">
+        <div className="flex mx-auto items-center mr-48">
           <div className="track-duration flex">
             {/* The <audio> element for playing the audio. */}
             <audio ref={audioRef} src={audioSrc} />
-            <p className="text-2xl text-white">{formatDuration(duration)}</p>
+            <p className="text-sm text-white mx-4">
+              {formatDuration(duration)}
+            </p>
           </div>
-
-          {/* Play/Pause button with dynamic icon. */}
-          {/* <button onClick={handlePlayPause}>
-          <span>{isPlaying ? "pause" : "play_arrow"}</span>
-        </button> */}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
