@@ -69,7 +69,6 @@ const AudioPlayer = ({ audioSrc, bookData }) => {
 
   //   Use an effect to listen for 'timeupdate' events from the audio element and update the UI.
   useEffect(() => {
-    // TODO: Fix null error of audioRef when navigating back a page using mouse buttons;
 
     if (audioRef.current) {
       audioRef.current.addEventListener("timeupdate", handleTimeUpdate);
