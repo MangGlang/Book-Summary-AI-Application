@@ -4,6 +4,7 @@ import { MdTimer10 } from "react-icons/md";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 import { FaPlayCircle } from "react-icons/fa";
+import { FaPauseCircle } from "react-icons/fa";
 
 const AudioPlayer = ({ audioSrc }) => {
   // Manage player's status and current time
@@ -73,16 +74,26 @@ const AudioPlayer = ({ audioSrc }) => {
     };
   });
 
+  // class names for styling buttons
+  const buttonStyle =
+    "text-white mx-6 text-5xl hover:scale-110 duration-300 ease-in-out";
+
   return (
     <>
-      <div className="flex mx-auto items-center justify-center">
+      <div className="w-[33%] flex mx-auto items-center  justify-center">
         <button className="flex text-2xl text-white hover:scale-110 duration-300 ease-in-out">
           <FaChevronLeft />
           <MdTimer10 />
         </button>
 
-        <button>
-          <FaPlayCircle className="text-white mx-6 text-5xl hover:scale-110 duration-300 ease-in-out" />
+        <button onClick={handlePlayPause}>
+          <span>
+            {isPlaying ? (
+              <FaPauseCircle className={buttonStyle} />
+            ) : (
+              <FaPlayCircle className={buttonStyle} />
+            )}
+          </span>
         </button>
 
         <button className="flex text-2xl text-white hover:scale-110 duration-300 ease-in-out">
@@ -90,30 +101,35 @@ const AudioPlayer = ({ audioSrc }) => {
           <FaChevronRight />
         </button>
       </div>
-      {/* Input range  for seekign within the audio track. */}
-      <input
-        type="range"
-        min="0"
-        max={duration}
-        value={currentTime}
-        onChange={handleSeek}
-      />
 
-      {/* Display current & total duration of the track. */}
-      <div className="w-[33%]">
-        <p className="text-2xl text-white text-left">
-          {formatDuration(currentTime)}
-        </p>
-        <div className="track-duration">
-          {/* The <audio> element for playing the audio. */}
-          <audio ref={audioRef} src={audioSrc} />
-          <p className="text-2xl text-white">{formatDuration(duration)}</p>
-        </div>
+      {/* Input range  for seeking within the audio track. */}
 
-        {/* Play/Pause button with dynamic icon. */}
-        <button onClick={handlePlayPause}>
+      {/* Audio Player */}
+      <div className="flex mx-auto items-center">
+          <p className="text-2xl text-white text-left">
+            {formatDuration(currentTime)}
+          </p>
+        <input
+          type="range"
+          min="0"
+          max={duration}
+          value={currentTime}
+          onChange={handleSeek}
+        />
+
+        {/* Display current & total duration of the track. */}
+        <div className="flex mx-auto items-center">
+          <div className="track-duration flex">
+            {/* The <audio> element for playing the audio. */}
+            <audio ref={audioRef} src={audioSrc} />
+            <p className="text-2xl text-white">{formatDuration(duration)}</p>
+          </div>
+
+          {/* Play/Pause button with dynamic icon. */}
+          {/* <button onClick={handlePlayPause}>
           <span>{isPlaying ? "pause" : "play_arrow"}</span>
-        </button>
+        </button> */}
+        </div>
       </div>
     </>
   );

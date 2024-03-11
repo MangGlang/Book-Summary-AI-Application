@@ -991,7 +991,7 @@ input[type="range"]:active::-moz-range-thumb {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 10px;
+  /* margin-top: 10px; */
 }
 
 .track-duration > p {

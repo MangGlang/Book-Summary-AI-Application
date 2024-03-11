@@ -54,7 +54,7 @@ const Player = () => {
       {bookData && (
         <div className="bg-[#042330] h-[80px] sticky w-full bottom-0 flex items-center justify-center px-10">
           <div className="flex  w-[33%]">
-            <figure>
+            <figure className="max-w-48">
               <img src={bookData.imageLink} width={48} height={48} alt="" />
             </figure>
             <div className="flex-row pl-3">
