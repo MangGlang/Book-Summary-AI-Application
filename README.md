@@ -38,4 +38,4 @@ Contributions are welcome! If you'd like to contribute, please submit a pull req
 The Book Summary AI Application is an ongoing project, with continuous enhancements and refinements to deliver an exceptional user experience.
 <h2>Credits</h2>
 
-    Author: [Your Name]
+    Author: [Minhlee Lam]
