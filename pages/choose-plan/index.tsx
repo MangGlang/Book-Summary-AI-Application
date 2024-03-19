@@ -8,7 +8,7 @@ import StripePayment from "@/components/StripePayment";
 import { useState } from "react";
 
 import { FaRegCircle, FaRegDotCircle } from "react-icons/fa";
-const auth = firebase;
+// const auth = firebase;
 import { getAuth } from "firebase/auth";
 // import { useRouter } from "next/router";
 import { useRouter } from "next/navigation";
@@ -16,7 +16,7 @@ import { getCheckoutUrl } from "@/stripe/StripePayment";
 import { getPremiumStatus } from "@/stripe/getPremiumStatus";
 
 // Stripe setup
-import firebase from "firebase/app";
+// import firebase from "firebase/app";
 import { initFirebase } from "@/firebase";
 import "firebase/firestore";
 import { useDispatch, useSelector } from "react-redux";

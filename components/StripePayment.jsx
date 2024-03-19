@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import firebase, { initFirebase } from "@/firebase";
+import { initFirebase } from "@/firebase";
 const auth = firebase;
 import { getAuth } from "firebase/auth";
 // import { useRouter } from "next/router";
