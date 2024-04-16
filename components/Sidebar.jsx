@@ -23,8 +23,11 @@ import { TbTransitionRight } from "react-icons/tb";
 
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LoginModal from "./modals/LoginModal";
+import axios from "axios";
+import { useParams } from "next/navigation";
+import { RxLetterCaseCapitalize } from "react-icons/rx";
 
 // Instead of passing expanded transition as a prop to sidebar links
 // we can utilize a context to convey the expanded state to all links
@@ -58,7 +61,27 @@ export default function Sidebar() {
   const expandedStyling = `overflow-hidden truncate ease-in-out
   ${expanded ? "" : "hidden duration-0"}`;
 
-  // console.log("user email: " + user.email);
+  const [bookData, setBookData] = useState(null);
+
+  async function getBookData() {
+    const { data } = await axios.get(
+      `https://us-central1-summaristt.cloudfunctions.net/getBook?id=${id}`
+    );
+    setBookData(data);
+  }
+
+  const { id } = router.query;
+  // const { id } = useParams();
+
+  useEffect(() => {
+    getBookData();
+  }, [id, bookData]);
+
+  const [display, setDisplay] = useState(false); 
+
+  const handleClick = () => {
+    setDisplay(!display); // Toggle isActive state on click
+  };
 
   return (
     <>
@@ -143,6 +166,26 @@ export default function Sidebar() {
                   Search
                 </div>
               </div>
+              <div className="ml-5 sidebar__link--wrapper hover:cursor-pointer items-center">
+                <RxLetterCaseCapitalize className={`sidebar__icon hover:scale-125 transition-all ease-in-out
+              ${display ? 'sidebar__font--size-icon--active' : ''}
+              }`} 
+              onClick={handleClick}/>
+                
+              </div>
+
+              {/* {
+              router.pathname == "/player/:id" && bookData ? (
+                <div className="summary">
+                  <h1>{bookData.title}</h1>
+                  <p>{bookData.summary}</p>
+                </div>
+              ) : (
+                <div className="summary">
+                  {id}
+                </div>
+              )} */}
+              
             </div>
             <div className="sidebar__bottom bottom-2">
               {/* TODO: Implement Settings Page */}

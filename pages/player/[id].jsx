@@ -28,7 +28,7 @@ const Player = () => {
   return (
     <section id="player">
       <div className="flex flex-row overscroll-y-auto">
-        <Sidebar />
+        <Sidebar bookData={bookData} id={id}/>
         {/* TODO: Implement increasing text sizes */}
 
         <div className="flex-row max-w-[100%] w-full">

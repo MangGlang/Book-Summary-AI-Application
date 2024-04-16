@@ -951,6 +951,10 @@ input::placeholder {
   transition: all 300ms ease-in-out;
 }
 
+.sidebar__font--size-icon--active {
+  border-bottom: 3px solid #2bd97c;
+}
+
 /* Audio/Text Player */
 /* =========================
 Custom Input range 
